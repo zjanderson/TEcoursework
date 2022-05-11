@@ -10,7 +10,7 @@
 # The script uses this value to set it as an upstream for the student.
 # The URL should look something like: "https://git.techelevator.com/campuses/nlr/jan-2022/java-green/instructor-code"
 
-upstream_repo="https://git.techelevator.com/campuses/nlr/may-2022/java-gray/instructor-code.git"
+upstream_repo="https://git.techelevator.com/campuses/nlr/may-2022/java-yellow/instructor-code.git"
 
 echo
 read -r -p "Enter your name (First Last): " name
