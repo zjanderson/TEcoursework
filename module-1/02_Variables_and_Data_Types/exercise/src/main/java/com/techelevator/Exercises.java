@@ -13,6 +13,8 @@ public class Exercises {
 		int birdsThatFlyAway = 1;
 		int birdsRemaining = birdsOnABranch - birdsThatFlyAway;
 
+		System.out.println(birdsRemaining);
+
         /* Exercise 2
         2. There are 6 birds and 3 nests. How many more birds are there than
         nests?
