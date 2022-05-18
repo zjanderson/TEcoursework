@@ -144,11 +144,22 @@ public class Exercises {
         did Mrs. Hilt's house have?
         */
 
+		int hiltSnow = 29;
+		int brecknockSnow = 17;
+		int snowDepthDiff = hiltSnow - brecknockSnow;
+
 
         /* Exercise 15
         15. Mrs. Hilt has $10. She spends $3 on a toy truck and $2 on a pencil
         case. How much money does she have left?
         */
+
+		int hiltCash = 10;
+		int toyTruck = 3;
+		int pencilCase = 2;
+		int cashRemains = hiltCash - (toyTruck + pencilCase);
+
+		System.out.println(cashRemains);
 
 
         /* Exercise 16
@@ -156,11 +167,19 @@ public class Exercises {
         marbles does he have now?
         */
 
+		int totalMarbles = 16;
+		int lostMarbles = 7;
+		int marblesLeft = totalMarbles - lostMarbles;
+
 
         /* Exercise 17
         17. Megan has 19 seashells. How many more seashells does she need to
         find to have 25 seashells in her collection?
         */
+
+		int currentSeashells = 19;
+		int desiredSeashells = 25;
+		int requiredSeashells = desiredSeashells - currentSeashells;
 
 
         /* Exercise 18
