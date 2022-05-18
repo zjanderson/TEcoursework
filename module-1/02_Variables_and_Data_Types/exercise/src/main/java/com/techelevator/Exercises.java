@@ -154,12 +154,10 @@ public class Exercises {
         case. How much money does she have left?
         */
 
-		int hiltCash = 10;
-		int toyTruck = 3;
-		int pencilCase = 2;
-		int cashRemains = hiltCash - (toyTruck + pencilCase);
-
-		System.out.println(cashRemains);
+		int hiltTotalCash = 10;
+		int toyTruckPrice = 3;
+		int pencilCasePrice = 2;
+		int cashRemains = hiltTotalCash-toyTruckPrice;
 
 
         /* Exercise 16
@@ -187,22 +185,38 @@ public class Exercises {
         many green balloons does Brad have?
         */
 
+		int totalBalloons = 17;
+		int redBalloons = 8;
+		int greenBallons = totalBalloons - redBalloons;
+
 
         /* Exercise 19
         19. There are 38 books on the shelf. Marta put 10 more books on the shelf.
         How many books are on the shelf now?
         */
 
+		int initialBooks = 38;
+		int additionalBooks = 10;
+		int allTheBooks = initialBooks + additionalBooks;
+
 
         /* Exercise 20
         20. A bee has 6 legs. How many legs do 8 bees have?
         */
+
+		int legsPerBee = 6;
+		int beesThatExist = 8;
+		int collectiveLegs = legsPerBee * beesThatExist;
 
 
         /* Exercise 21
         21. Mrs. Hilt bought an ice cream cone for 99 cents. How much would 2 ice
         cream cones cost?
         */
+
+		double iceCreamCone = 0.99;
+		int coneQuantity = 2;
+		double totalSpentOnCones = iceCreamCone * coneQuantity;
 
 
         /* Exercise 22
@@ -211,17 +225,29 @@ public class Exercises {
         does she need to complete the border?
         */
 
+		int rocksOwned = 64;
+		int rocksNeeded=125;
+		int rocksToBuy = rocksNeeded - rocksOwned;
+
 
         /* Exercise 23
         23. Mrs. Hilt had 38 marbles. She lost 15 of them. How many marbles does
         she have left?
         */
 
+		int hadMarbles = 38;
+		int lostTheseMarbles = 15;
+		int remainingMarbles= hadMarbles - lostTheseMarbles;
+
 
         /* Exercise 24
         24. Mrs. Hilt and her sister drove to a concert 78 miles away. They drove 32
         miles and then stopped for gas. How many miles did they have left to drive?
         */
+
+		int totalMiles = 78;
+		int milesDriven = 32;
+		int milesLeft = totalMiles - milesDriven;
 
 
         /* Exercise 25

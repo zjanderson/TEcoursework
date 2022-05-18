@@ -18,7 +18,9 @@ public class Exercise01_TestGrading {
     gradeTestPassFail(45) ➔ false
      */
     public boolean gradeTestPassFail(int score) {
-        return false;
+        boolean isPassingScore = score >= 70;
+
+        return isPassingScore;
     }
 
     /*
