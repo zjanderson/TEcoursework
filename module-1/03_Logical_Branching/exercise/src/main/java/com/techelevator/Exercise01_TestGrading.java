@@ -39,7 +39,17 @@ public class Exercise01_TestGrading {
     gradeTestNumeric(10) ➔ 0
      */
     public int gradeTestNumeric(int score) {
-        return 0;
+        if (score  > 89) {
+            return 3;
+        } else if (score > 49) {
+            return 2;
+        } else if (score > 24) {
+            return 1;
+        }
+
+
+
+        else return 0;
     }
 
     /*
@@ -58,6 +68,18 @@ public class Exercise01_TestGrading {
     gradeTestLetter(45) ➔ 'F'
      */
     public char gradeTestLetter(int score) {
-        return ' ';
+        if (score  > 89) {
+            return 'A';
+        } else if (score > 79) {
+            return 'B';
+        } else if (score > 69) {
+            return 'C';
+        } else if (score > 59) {
+            return 'D';
+        }
+
+
+
+        else return 'F';
     }
 }
