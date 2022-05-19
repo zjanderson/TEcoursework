@@ -24,6 +24,9 @@ public class Exercise05_AcceptPackage {
     acceptPackage(50) ➔ false
      */
     public boolean acceptPackage(int weightPounds) {
+        if (weightPounds < 41) {
+            return true;
+        }
         return false;
     }
 
@@ -41,6 +44,9 @@ public class Exercise05_AcceptPackage {
     acceptPackage(50, 4, 5, 10) ➔ false
      */
     public boolean acceptPackage(int weightPounds, int lengthInches, int widthInches, int heightInches) {
+        if ((weightPounds < 41) && ((lengthInches * widthInches * heightInches) < 6913)) {
+            return true;
+        }
         return false;
     }
 
