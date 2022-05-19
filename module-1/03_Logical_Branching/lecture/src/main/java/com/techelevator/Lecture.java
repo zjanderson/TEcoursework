@@ -169,5 +169,20 @@ public class Lecture {
             return "Minor";
         }
     }
+    public  boolean isHybrid(boolean isGas, boolean isDiesel, boolean isElectric) {
+        if (isGas) {
+            if (isDiesel || isElectric) {
+                return true;
+            }  else {
+                return false;
+            }
 
+        } else if (isDiesel) {
+            if (isElectric) {
+                return true;
+            } else
+            }
+        }
+
+    }
 }
