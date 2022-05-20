@@ -23,9 +23,9 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(2) ➔ 199.98
     calculateStayTotal(3) ➔ 269.97
      */
-    /*
+
     public double calculateStayTotal(int numberOfNights) {
-        double priceToStay;
+       /* double priceToStay;
 
         if (numberOfNights >= 3)  {
             priceToStay = numberOfNights * DISCOUNT_RATE;
@@ -35,9 +35,9 @@ public class Exercise04_HotelReservation {
             return  priceToStay;
         }
 
-
+*/ return 0;
     }
-*/
+
     /*
     The owners of Innovator's Inn realized weekends are more popular than weekdays. Because of this, they've raised
     the rate for weekend night rates to $99.99 regardless of how many nights a guest is staying.
@@ -52,8 +52,8 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, 1) ➔ 279.97
     calculateStayTotal(3, 2) ➔ 289.97
      */
-   /* public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights) {
-        double priceToStay;
+    public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights) {
+       /* double priceToStay;
 
         if (numOfWeekendNights == 0) {if (numOfTotalNights >= 3)  {
             priceToStay = numOfTotalNights * DISCOUNT_RATE;
@@ -73,6 +73,8 @@ public class Exercise04_HotelReservation {
                 return priceToStay;
             }
         }
+
+        */ return 0;
     }
 
     /*
@@ -89,9 +91,9 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, 0, true) ➔ 269.97
     calculateStayTotal(3, 1, true) ➔ 269.97
      */
-    /*
+
      public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights, boolean isRewardsMember) {
-                 double priceToStay;
+          /*       double priceToStay;
 
                 if (isRewardsMember) {
                     priceToStay = (numOfTotalNights * DISCOUNT_RATE);
@@ -118,6 +120,8 @@ public class Exercise04_HotelReservation {
                     }
                     return 0;
                 }
+                */ return 0;
             }
+
+
 }
-*/
