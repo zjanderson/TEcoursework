@@ -24,6 +24,9 @@ public class Exercise02_BoardingGate {
     generateSeatingChart(2) → [true, true]
      */
     public boolean[] generateSeatingChart(int numberOfSeats) {
+
+        //generate a new boolean array here, make sure it's all true
+
         return new boolean[] {};
     }
 
@@ -40,7 +43,7 @@ public class Exercise02_BoardingGate {
     getAvailableSeatCount([true, true, true, false]) → 3
     getAvailableSeatCount([]) → 0
      */
-    public int getAvailableSeatCount(boolean[] seatingChart) {
+    public int getAvailableSeatCount(boolean[] seatingChart) {  //make a loop that counts how many 'true' elements exist
         return 0;
     }
 
@@ -58,7 +61,27 @@ public class Exercise02_BoardingGate {
     getNumberOfFullRows([false, true, true, false, true, true]) → 0
      */
     public int getNumberOfFullRows(boolean[] seatingChart) {
-        return 0;
+        int howManyFullRows = 0;  //this is what I'm going to return
+
+        int counter = 0; //if this reaches 3, I'll know i have a full row
+        for (int i = 0; i < seatingChart.length; i++) {
+
+            boolean isStartOfRow = i % 3 == 0; //this will reset the counter to 0 at the start of a row
+            if (isStartOfRow) {
+                counter = 0;
+            }
+
+            if (!seatingChart[i]) { //this is to see if the element at position i is 'false'
+                counter++;
+
+                if (counter == 3) { //this will increment the variable howManyFullRows in the event we reach a full row
+                    howManyFullRows++;
+                }
+            }
+        }
+
+
+        return howManyFullRows;
     }
 
 }

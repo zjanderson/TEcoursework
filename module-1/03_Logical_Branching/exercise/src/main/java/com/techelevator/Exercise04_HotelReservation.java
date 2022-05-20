@@ -23,6 +23,7 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(2) ➔ 199.98
     calculateStayTotal(3) ➔ 269.97
      */
+    /*
     public double calculateStayTotal(int numberOfNights) {
         double priceToStay;
 
@@ -36,7 +37,7 @@ public class Exercise04_HotelReservation {
 
 
     }
-
+*/
     /*
     The owners of Innovator's Inn realized weekends are more popular than weekdays. Because of this, they've raised
     the rate for weekend night rates to $99.99 regardless of how many nights a guest is staying.
@@ -51,7 +52,7 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, 1) ➔ 279.97
     calculateStayTotal(3, 2) ➔ 289.97
      */
-    public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights) {
+   /* public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights) {
         double priceToStay;
 
         if (numOfWeekendNights == 0) {if (numOfTotalNights >= 3)  {
@@ -63,13 +64,15 @@ public class Exercise04_HotelReservation {
         }
 
         }
-        else {if (numOfTotalNights >= 3)  {
-            priceToStay = ((numOfTotalNights - numOfWeekendNights) * DISCOUNT_RATE) + (numOfWeekendNights * DAILY_RATE);
-            return  priceToStay;
-        } else {
-            priceToStay = numOfTotalNights * DAILY_RATE;
-            return  priceToStay;
-
+        else {
+            if (numOfTotalNights >= 3) {
+                priceToStay = ((numOfTotalNights - numOfWeekendNights) * DISCOUNT_RATE) + (numOfWeekendNights * DAILY_RATE);
+                return priceToStay;
+            } else {
+                priceToStay = numOfTotalNights * DAILY_RATE;
+                return priceToStay;
+            }
+        }
     }
 
     /*
@@ -86,7 +89,8 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, 0, true) ➔ 269.97
     calculateStayTotal(3, 1, true) ➔ 269.97
      */
-    public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights, boolean isRewardsMember) {
+    /*
+     public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights, boolean isRewardsMember) {
                  double priceToStay;
 
                 if (isRewardsMember) {
@@ -116,3 +120,4 @@ public class Exercise04_HotelReservation {
                 }
             }
 }
+*/
