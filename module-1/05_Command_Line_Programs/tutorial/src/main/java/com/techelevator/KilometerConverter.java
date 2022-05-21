@@ -5,10 +5,7 @@ import java.util.Scanner;
 public class KilometerConverter {
     public static void main(String[] args) {
 
-        public static double kilometersToMiles(int kilometers) {
-            final double MILES_PER_KILOMETER = 0.621371;
-            return kilometers * MILES_PER_KILOMETER;
-        }
+
         Scanner input = new Scanner(System.in);
 
             System.out.println("Enter a kilometer value at which to start: ");
@@ -28,12 +25,16 @@ public class KilometerConverter {
 
         for (int km = kilometerStartPoint; km <= kilometerEndPoint; km += incrementBy ) {
 
-            double miles = kilometersToMiles(km);
+            double miles =  kilometersToMiles(km);
             System.out.println(km + "km is " + miles + "mi.");
         }
 
 
 
+    }
+    public static double kilometersToMiles(int kilometers) {
+        final double MILES_PER_KILOMETER = 0.621371;
+        return kilometers * MILES_PER_KILOMETER;
     }
 
     
