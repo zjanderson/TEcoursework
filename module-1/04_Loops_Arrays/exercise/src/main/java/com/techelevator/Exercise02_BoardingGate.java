@@ -24,6 +24,9 @@ public class Exercise02_BoardingGate {
     generateSeatingChart(2) → [true, true]
      */
     public boolean[] generateSeatingChart(int numberOfSeats) {
+        boolean[] availSeats = { //need to use loop & take  numberOfSeats given & make array  that length, assign elements 'true'
+
+        };
 
         //generate a new boolean array here, make sure it's all true
 

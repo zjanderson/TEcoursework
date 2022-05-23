@@ -23,7 +23,7 @@ public class TempConvert {
 			if (isCelsiius) {
 				int temperatureCelsius = givenTemperature;
 				double temperatureFarenheit = (temperatureCelsius * 1.8) + 32;
-				
+
 				
 				System.out.println(givenTemperature + "C is " + temperatureFarenheit + "F");
 			} else {
