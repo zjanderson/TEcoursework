@@ -32,7 +32,7 @@ public class Exercises {
 	 makeTags("cite", "Yay") → "<cite>Yay</cite>"
 	 */
 	public String makeTags(String tag, String word) {
-		return null;
+		return "<" + tag + ">" + word + "</" + tag + ">";
 	}
 
 	/*
@@ -230,6 +230,7 @@ public class Exercises {
 	 stringTimes("Hi", 2) → "HiHi"
 	 stringTimes("Hi", 3) → "HiHiHi"
 	 stringTimes("Hi", 1) → "Hi"
+	 --we need to concatonate this string with itself, in a LOOP, of course. zja
 	 */
 	public String stringTimes(String str, int n) {
 		return null;

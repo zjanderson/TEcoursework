@@ -235,12 +235,12 @@ public class Lecture {
 	 *
 	 */
 	public static int howManyOf(String str, char x) {
-		int charCount = 0;
+		int charCount = 0; //this is what we're trying to find
 
-		for (int i = 0; i < str.length(); i++) {
+		for (int i = 0; i < str.length(); i++) {    //we need to iterate thru string to find char
 
 			if (str.charAt(i) == x) {
-				charCount++;
+				charCount++;                       //only increase charCount if char is found
 			}
 		}
 
@@ -296,7 +296,7 @@ public class Lecture {
 
 		for (int i = 0; i < words.length; i++) {
 			String word = words[i];
-			String newWord = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
+			String newWord = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase(); //extract first char and go uppercase, extract the rest and go lowercase
 			returnValue += newWord + " ";
 		}
 

@@ -17,6 +17,7 @@ public class LinearConvert {
 
 		System.out.println("Is the length in (M)eters, or (F)eet? ");
 		userInput = input.nextLine();
+		//char mOrF = Char.parseChar(userInput);
 
 		boolean isMeters = (userInput == "M");
 		if (isMeters) {
