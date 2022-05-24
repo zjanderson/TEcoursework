@@ -27,7 +27,7 @@ public class LinearConvert {
 			double lengthFeet = givenLength;
 			double lengthMeters = (lengthFeet * 0.3048);
 			System.out.println(givenLength + " feet is " + lengthMeters + "meters.");
-		}
+		} 
 
 		//Double.parseDouble(userInput);  //takes the string from the scanner input and makes it into a double
 
