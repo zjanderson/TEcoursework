@@ -233,7 +233,7 @@ public class Lecture {
 
 		for (int i = 0; i < words.length; i++) {
 			String word = words[i];			//looks through the array words[],
-			String newWord = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase(); // 
+			String newWord = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase(); //
 			returnValue += newWord + " ";
 
 		}

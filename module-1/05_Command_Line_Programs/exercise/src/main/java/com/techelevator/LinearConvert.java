@@ -6,13 +6,30 @@ public class LinearConvert {
 
 	public static void main(String[] args) {
 
-		Scanner scanner = new Scanner(System.in);
+		// lengthMeters = lengthFeet * 0.3048;
+		// lengthFeet = lengthMeters * 3.2808399;
 
-		String userInput = scanner.nextLine(); //user input given
+		Scanner input = new Scanner(System.in);
 
-	//	Integer.parseInt(userInput);
+		System.out.println("Please enter the length: ");
+		String userInput = input.nextLine(); //user input given
+		 double givenLength = Double.parseDouble(userInput);
 
-		Double.parseDouble(userInput);  //takes the string from the scanner input and makes it into a double
+		System.out.println("Is the length in (M)eters, or (F)eet? ");
+		userInput = input.nextLine();
+
+		boolean isMeters = (userInput == "M");
+		if (isMeters) {
+			double lengthMeters = givenLength;
+			double lengthFeet = (lengthMeters * 3.2808399);
+			System.out.println(givenLength + " meters is " + lengthFeet + "feet.");
+		} else {
+			double lengthFeet = givenLength;
+			double lengthMeters = (lengthFeet * 0.3048);
+			System.out.println(givenLength + " feet is " + lengthMeters + "meters.");
+		}
+
+		//Double.parseDouble(userInput);  //takes the string from the scanner input and makes it into a double
 
 
 	}

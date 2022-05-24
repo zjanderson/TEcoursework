@@ -17,10 +17,10 @@ public class TempConvert {
 			System.out.println("Is the temperature in (C)elsius, or (F)ahrenheit? ");
 			response = input.nextLine();
 			
-			boolean isCelsiius = (response ==  "C");
+			boolean isCelsius = (response ==  "C");
 
-			boolean isCelsiius1 = isCelsiius;
-			if (isCelsiius) {
+			//boolean isCelsiius1 = isCelsiius;
+			if (isCelsius) {
 				int temperatureCelsius = givenTemperature;
 				double temperatureFarenheit = (temperatureCelsius * 1.8) + 32;
 
