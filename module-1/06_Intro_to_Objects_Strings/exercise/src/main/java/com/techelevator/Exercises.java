@@ -261,7 +261,18 @@ public class Exercises {
 	 twoChar("java", 3) → "ja"
 	 */
 	public String twoChar(String str, int index) {
-		return null;
+
+		String theTwo = str.substring(index);
+
+		//index must be greater than zero
+		//ending substring value must be less than length of string
+
+		if ((str.length() < 2) || (index < 0) || (index > (str.length() - 2))) {
+			theTwo = str.substring(0, 2);
+		} else {
+			theTwo = str.substring(index, (index + 2));
+		}
+		return theTwo;
 	}
 
 	/*

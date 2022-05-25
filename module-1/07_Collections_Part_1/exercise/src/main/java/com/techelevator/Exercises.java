@@ -35,7 +35,7 @@ public class Exercises {
 	public String[] list2Array(List<String> stringList) {
 		//need to create array, then index counter to add things via loop
 
-		String[] array = String[stringList.size()];
+		String[] array = new String[stringList.size()];
 
 		for (int i = 0; i < stringList.size(); i++) { //this loop will go through the array until end
 			array[i] = stringList.get(i);  //this adds each element to the list
