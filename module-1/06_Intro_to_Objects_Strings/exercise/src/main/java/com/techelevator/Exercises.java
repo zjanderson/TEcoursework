@@ -44,7 +44,11 @@ public class Exercises {
 	 makeOutWord("[[]]", "word") → "[[word]]"
 	 */
 	public String makeOutWord(String out, String word) {
-		return null;
+		String firstSubstring = out.substring(0, 2); //first to characters of out
+		String secondSubstring = out.substring(2); //last two characters of out
+
+		String newString = firstSubstring + word + secondSubstring;
+		return newString;
 	}
 
 	/*
@@ -55,7 +59,9 @@ public class Exercises {
 	 extraEnd("Hi") → "HiHiHi"
 	 */
 	public String extraEnd(String str) {
-		return null;
+		String lastTwoChar  = str.substring((str.length() - 2));
+		String threeCopies = lastTwoChar + lastTwoChar + lastTwoChar;
+		return threeCopies;
 	}
 
 	/*
@@ -67,7 +73,14 @@ public class Exercises {
 	 firstTwo("ab") → "ab"
 	 */
 	public String firstTwo(String str) {
-		return null;
+		if (str.length() < 3) {
+			return str;
+		} else {
+			String firstTwoChar = str.substring(0, 2);
+			return firstTwoChar;
+		}
+
+
 	}
 
 	/*
@@ -77,7 +90,9 @@ public class Exercises {
 	 firstHalf("abcdef") → "abc"
 	 */
 	public String firstHalf(String str) {
-		return null;
+		String halfOfStr = str.substring(0, (str.length()/2));
+
+		return halfOfStr;
 	}
 
 	/*
@@ -88,7 +103,8 @@ public class Exercises {
 	 withoutEnd("coding") → "odin"
 	 */
 	public String withoutEnd(String str) {
-		return null;
+		String trimmed = str.substring(1, (str.length()-1));
+		return trimmed;
 	}
 
 	/*
@@ -100,7 +116,17 @@ public class Exercises {
 	 comboString("aaa", "b") → "baaab"
 	 */
 	public String comboString(String a, String b) {
-		return null;
+		String combo = "";
+
+		if (a.length() > b.length()) {
+			combo = b + a + b;
+			return combo;
+		} else {
+			combo = a + b + a;
+			return combo;
+		}
+
+
 	}
 
 	/*
@@ -111,7 +137,11 @@ public class Exercises {
 	 nonStart("shotl", "java") → "hotlava"
 	 */
 	public String nonStart(String a, String b) {
-		return null;
+		String aShort = a.substring(1);
+		String bShort = b.substring(1);
+
+		String bothStrings = aShort + bShort;
+		return bothStrings;
 	}
 
 	/*
@@ -122,7 +152,10 @@ public class Exercises {
 	 left2("Hi") → "Hi"
 	 */
 	public String left2(String str) {
-		return null;
+		String firstChunk = str.substring(0, 2);
+		String secondChunk = str.substring(2);
+		String frankenStr = secondChunk + firstChunk;
+		return frankenStr;
 	}
 
 	/*
@@ -133,7 +166,10 @@ public class Exercises {
 	 right2("Hi") → "Hi"
 	 */
 	public String right2(String str) {
-		return null;
+		String lastChunk = str.substring((str.length() - 2));
+		String midChunk = str.substring(0, (str.length() - 2));
+		String togetherNow = lastChunk + midChunk;
+		return togetherNow;
 	}
 
 	/*
@@ -143,8 +179,15 @@ public class Exercises {
 	 theEnd("Hello", false) → "o"
 	 theEnd("oh", true) → "o"
 	 */
-	public String theEnd(String str, boolean front) {
-		return null;
+	public String theEnd(String str, boolean front) {  
+		if (front) {
+			String firstLetter = str.substring(0, 1);
+			return firstLetter;
+		} else {
+			String lastLetter = str.substring(str.length() - 1);
+			return lastLetter;
+		}
+
 	}
 
 	/*
@@ -155,7 +198,13 @@ public class Exercises {
 	 withoutEnd2("ab") → ""
 	 */
 	public String withoutEnd2(String str) {
-		return null;
+		if (str.length() < 2) {
+			return str =  "";
+		}
+		String loseFirst = str.substring(1);
+		String loseLast = loseFirst.substring(0, (str.length() - 2));
+
+		return loseLast;
 	}
 
 	/*
@@ -166,7 +215,11 @@ public class Exercises {
 	 middleTwo("Practice") → "ct"
 	 */
 	public String middleTwo(String str) {
-		return null;
+		//find the middle
+		int middle = (str.length() / 2);
+		String theMids = str.substring((middle -1), (middle + 1));
+
+		return theMids;
 	}
 
 	/*
@@ -176,6 +229,12 @@ public class Exercises {
 	 endsLy("oddy") → false
 	 */
 	public boolean endsLy(String str) {
+		if (str.length() >= 2) {
+			String endingTwo = str.substring(str.length() - 2);
+			if (endingTwo.equalsIgnoreCase("ly")) {
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -187,7 +246,10 @@ public class Exercises {
 	 nTwice("Chocolate", 1) → "Ce"
 	 */
 	public String nTwice(String str, int n) {
-		return null;
+		String begin = str.substring(0, (n));
+		String ending = str.substring(str.length() - n);
+		String disString = begin + ending;
+		return disString;
 	}
 
 	/*
@@ -210,7 +272,11 @@ public class Exercises {
 	 middleThree("solving") → "lvi"
 	 */
 	public String middleThree(String str) {
-		return null;
+		//find the middle
+		int middle = (str.length() / 2);
+		String theMids = str.substring((middle -1), (middle + 2));
+
+		return theMids;
 	}
 
 	/*
@@ -274,7 +340,13 @@ public class Exercises {
 	 stringBits("Heeololeo") → "Hello"
 	 */
 	public String stringBits(String str) {
-		return null;
+		String newString = "";
+
+		for (int i = 0; i < str.length(); i += 2) {
+			newString = (newString + str.charAt(i));
+		}
+
+		return newString;
 	}
 
 	/*
@@ -290,11 +362,12 @@ public class Exercises {
 	/*
 	 Given a string, return the count of the number of times that a substring length 2 appears in the string and
 	 also as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).
-	 last2("hixxhi") → 1
-	 last2("xaxxaxaxx") → 1
-	 last2("axxxaaxx") → 2
-	 */
+	 last2("hixxhi") → 1  hi && hi
+	 last2("xaxxaxaxx") → 1 xx && xx
+	 last2("axxxaaxx") → 2 xx && xx && xx
+	 */  //need to make a counter, set a variable that will pull off the last two chars, and then a for loop that ends at length-2
 	public int last2(String str) {
+
 		return 0;
 	}
 
@@ -306,7 +379,21 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
-		return null;
+		//check for 'x' after str.substring(0) AND before str.substring(str.length());
+
+		//return the string without x's unless x is at index 0 or index str.length() - 1:
+		
+			for  (int i = 1; i < str.length() - 1; i++); {
+				if(str.contains("x")) {
+					int i = 1;
+					str = str.substring(0, i) + str.substring(i+1); //what do i want my code to do here? remove the x.
+					//if (str.substring(i).equals ("x"))
+				}
+				//need to manipulate variable i and have the next loop iterate through i
+		}
+
+
+		return str;
 	}
 
 	/*

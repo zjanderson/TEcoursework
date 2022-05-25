@@ -15,8 +15,15 @@ public class Exercises {
 	 array2List( {"Red", "Orange", "Yellow"} )  ->  ["Red", "Orange", "Yellow"]
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
-	public List<String> array2List(String[] stringArray) {
-		return null;
+	public List<String> array2List(String[] stringArray) {  //lets create a list
+
+		List<String> list = new ArrayList<>();
+		for (String arrayElement : stringArray) {  //for-each loop
+			list.add(arrayElement);
+		}
+
+
+		return list;
 	}
 
 	/*

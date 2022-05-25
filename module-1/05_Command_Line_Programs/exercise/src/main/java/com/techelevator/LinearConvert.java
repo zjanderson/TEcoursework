@@ -17,9 +17,9 @@ public class LinearConvert {
 
 		System.out.println("Is the length in (M)eters, or (F)eet? ");
 		userInput = input.nextLine();
-		//char mOrF = Char.parseChar(userInput);
+		//char mOrF = Character.parseCharacter(userInput);
 
-		boolean isMeters = (userInput == "M");
+		boolean isMeters = (userInput.equals ("M"));
 		if (isMeters) {
 			double lengthMeters = givenLength;
 			double lengthFeet = (lengthMeters * 3.2808399);

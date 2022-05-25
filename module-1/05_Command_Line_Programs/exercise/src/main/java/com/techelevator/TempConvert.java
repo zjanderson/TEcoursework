@@ -17,7 +17,7 @@ public class TempConvert {
 			System.out.println("Is the temperature in (C)elsius, or (F)ahrenheit? ");
 			response = input.nextLine();
 			
-			boolean isCelsius = (response ==  "C");
+			boolean isCelsius = (response.equals("C"));
 
 			//boolean isCelsiius1 = isCelsiius;
 			if (isCelsius) {
