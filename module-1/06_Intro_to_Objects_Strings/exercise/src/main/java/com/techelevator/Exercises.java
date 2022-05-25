@@ -179,7 +179,7 @@ public class Exercises {
 	 theEnd("Hello", false) → "o"
 	 theEnd("oh", true) → "o"
 	 */
-	public String theEnd(String str, boolean front) {  
+	public String theEnd(String str, boolean front) {
 		if (front) {
 			String firstLetter = str.substring(0, 1);
 			return firstLetter;
