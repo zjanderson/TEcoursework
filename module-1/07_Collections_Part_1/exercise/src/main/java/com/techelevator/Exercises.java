@@ -17,7 +17,7 @@ public class Exercises {
 	 */
 	public List<String> array2List(String[] stringArray) {  //lets create a list
 
-		List<String> list = new ArrayList<>();
+		List<String> list = new ArrayList<>(stringArray.length);
 		for (String arrayElement : stringArray) {  //for-each loop
 			list.add(arrayElement);
 		}
@@ -33,7 +33,15 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+		//need to create array, then index counter to add things via loop
+
+		String[] array = String[stringList.size()];
+
+		for (int i = 0; i < stringList.size(); i++) { //this loop will go through the array until end
+			array[i] = stringList.get(i);  //this adds each element to the list
+
+		}
+		return array;
 	}
 
 	/*
