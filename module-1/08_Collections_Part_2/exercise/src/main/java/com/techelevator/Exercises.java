@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Exercises {
@@ -12,7 +13,7 @@ public class Exercises {
 	 * The animal name should be case insensitive so "elephant", "Elephant", and
 	 * "ELEPHANT" should all return "Herd".
 	 *
-	 * If the name of the animal is not found, null, or empty, return "unknown".
+	 * If the name of the animal is not found, null, or empty, return "unknown".  <-- this is edge case
 	 *
 	 * Rhino -> Crash
 	 * Giraffe -> Tower
@@ -34,6 +35,23 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
+		Exercises e = new Exercises();
+		e.animalGroupName((null));  //I'm writing my own test for the following function
+
+		if (animalName == null || animalName.equals("")) { //== for checking null, it's on the stack, and .equals for String on heap
+			return "unknown";
+		}
+
+		Map<String, String> animalGroupings=new HashMap<>();
+		animalGroupings.put("Rhino", "Crash"); //put all the items from list in here
+
+
+		animalName = animalName.toLowerCase(); //makes sure everything is lower case to streamline searching and eliminate errors
+
+		if (animalGroupings.containsKey(animalName)) { //they give us the animal name
+			return animalGroupings.get(animalName);
+		}
+
 		return null;
 	}
 
