@@ -52,7 +52,15 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		List<String> myArrayList = new ArrayList<>();
+
+		for (int i = 0; i < (stringArray.length); i++) {
+
+
+		}
+
+
+		return myArrayList;
 	}
 
 	/*
@@ -72,7 +80,16 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 81238
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		int largestInt = 0;
+
+		for (int i = 0; i < integerList.size(); i++) {
+			if (largestInt < integerList.get(i)) {
+				largestInt = integerList.get(i);
+			}
+
+		}
+
+		return largestInt;
 	}
 
 	/*
@@ -93,6 +110,18 @@ public class Exercises {
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+
+		int counter = 0;
+
+		for (int i = 0; i < integerList.size(); i++) {
+			if (integerList.get(i) == intToFind) {
+				counter++;
+			} if (counter >= 2) {
+				return true;
+			}
+
+		}
+
 		return false;
 	}
 
@@ -109,7 +138,24 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> myStringList = new ArrayList<>();
+
+		for (Integer arrayElement : integerArray) {
+
+			if (arrayElement % 5 == 0 && (arrayElement % 3 == 0)) {
+				myStringList.add("FizzBuzz");
+			} else if (arrayElement % 5 == 0) {
+				myStringList.add("Buzz");
+			} else if (arrayElement % 3 == 0) {
+				myStringList.add("Fizz");
+			} else {
+				//arrayElement.toString();
+				myStringList.add(arrayElement.toString());
+			}
+		}
+
+
+		return myStringList;
 	}
 
 	/*
@@ -118,9 +164,24 @@ public class Exercises {
 	 Return the new list. If the lists are of unequal lengths, simply attach the remaining elements of the longer
 	 list to the new list before returning it.
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
-	 */
+	 */  //we need to find the smaller list, and add it TO the larger list, not the other way around
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+
+		List<Integer> combinedList = new ArrayList<>(); /*
+
+		if (listOne.size() >= listTwo.size()) {
+			for (int i = 0;  (i < listOne.size()); i += 2) {
+				combinedList.add(i, listOne(i));
+				combinedList.add(i + 1, listTwo(i));
+				return combinedList;
+			} if (listOne.size() < listTwo.size())
+				for (int i = 0;  (i < listTwo.size()); i += 2) {
+					listTwo.add(i, listOne.get(i));
+					return combinedList;
+
+			}
+		} */
+		return combinedList;
 	}
 
 }
