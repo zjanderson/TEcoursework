@@ -116,7 +116,7 @@ public class Exercises {
 		for (int i = 0; i < integerList.size(); i++) {
 			if (integerList.get(i) == intToFind) {
 				counter++;
-			} if (counter >= 2) {
+			 if (counter >= 2)
 				return true;
 			}
 
@@ -138,7 +138,7 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		List<String> myStringList = new ArrayList<>();
+		List<String> myStringList = new ArrayList<>(integerArray.length);
 
 		for (Integer arrayElement : integerArray) {
 
@@ -167,8 +167,32 @@ public class Exercises {
 	 */  //we need to find the smaller list, and add it TO the larger list, not the other way around
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
 
-		List<Integer> combinedList = new ArrayList<>(); /*
+		List<Integer> combinedList = new ArrayList<>();
+		int minSize;
 
+		List<Integer> largerList;
+		if (listOne.size() >= listTwo.size()) {
+			largerList = listOne;
+			minSize = listTwo.size();
+		} else {
+			largerList = listTwo;
+			minSize = listOne.size();
+		}
+
+		for (int i = 0; i < minSize; i++) {
+		int listOneElement = listOne.get(i);
+		int listTwoElement = listTwo.get(i);
+
+		combinedList.add(listOneElement);
+		combinedList.add(listTwoElement);
+		} //this works for lists of the same size
+
+		for (int i = minSize; i < largerList.size(); i++) {
+			int listElement = largerList.get(i);
+			combinedList.add(listElement);
+
+		}
+/*
 		if (listOne.size() >= listTwo.size()) {
 			for (int i = 0;  (i < listOne.size()); i += 2) {
 				combinedList.add(i, listOne(i));
