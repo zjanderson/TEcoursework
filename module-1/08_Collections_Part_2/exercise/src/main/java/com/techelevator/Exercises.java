@@ -35,15 +35,25 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
-		Exercises e = new Exercises();
-		e.animalGroupName((null));  //I'm writing my own test for the following function
-
+//		Exercises e = new Exercises();
+//		e.animalGroupName(null);  //I'm writing my own test for the following function
 		if (animalName == null || animalName.equals("")) { //== for checking null, it's on the stack, and .equals for String on heap
 			return "unknown";
 		}
 
 		Map<String, String> animalGroupings=new HashMap<>();
-		animalGroupings.put("Rhino", "Crash"); //put all the items from list in here
+		animalGroupings.put("rhino", "Crash"); //put all the items from list in here, repeat for all animals lower case
+		animalGroupings.put("giraffe", "Tower");
+		animalGroupings.put("elephant", "Herd");
+		animalGroupings.put("lion", "Pride");
+		animalGroupings.put("crow", "Murder");
+		animalGroupings.put("pigeon", "Kit");
+		animalGroupings.put("flamingo", "Pat");
+		animalGroupings.put("deer", "Herd");
+		animalGroupings.put("dog", "Pack");
+		animalGroupings.put("crocodile", "Float");
+
+
 
 
 		animalName = animalName.toLowerCase(); //makes sure everything is lower case to streamline searching and eliminate errors
@@ -52,7 +62,7 @@ public class Exercises {
 			return animalGroupings.get(animalName);
 		}
 
-		return null;
+		return "unknown";
 	}
 
 	/*
@@ -77,8 +87,28 @@ public class Exercises {
 	 * isItOnSale("dungeon9999") → 0.00
 	 *
 	 */
-	public double isItOnSale(String itemNumber) {
-		return -1.0;
+	public double isItOnSale(String itemNumber) {  //we need to again convert all to lowercase for both
+		Map<String, Double> gimmeDiscounts = new HashMap<>();
+
+		gimmeDiscounts.put("kitchen4001", 0.20); //repeat this process for all items above
+		gimmeDiscounts.put("garage1070", 0.15);
+		gimmeDiscounts.put("livingroom", 0.10);
+		gimmeDiscounts.put("kitchen6073", 0.40);
+		gimmeDiscounts.put("bedroom3434", 0.60);
+		gimmeDiscounts.put("bathoo73", 0.15);
+
+		if (itemNumber == null || itemNumber.equals("")) {
+			return 0.00;
+		}
+
+		itemNumber = itemNumber.toLowerCase();
+
+		if (gimmeDiscounts.containsKey(itemNumber)) {
+			return gimmeDiscounts.get(itemNumber);
+		}
+
+
+		return 0.00;
 	}
 
 	/*
@@ -91,7 +121,9 @@ public class Exercises {
 	 * robPeterToPayPaul({"Peter": 2000, "Paul": 30000}) → {"Peter": 2000, "Paul": 30000}
 	 *
 	 */
-	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
+	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) { //we can make a new map or change orig one, can use .put or .replace
+		//int peterHas
+
 		return null;
 	}
 
