@@ -122,9 +122,20 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) { //we can make a new map or change orig one, can use .put or .replace
-		//int peterHas
+		int peterHas = peterPaul.get("Peter");
+		int paulHas = peterPaul.get("Paul");  //they're giving us map peterPaul, we're just extracting the value here
 
-		return null;
+		if ((peterHas <= 0) || paulHas >= 1000 ) {  //edge cases, return what's given to us
+			return peterPaul;
+		}
+
+		paulHas = paulHas + (peterHas / 2);  //Paul gets half of Peter's money
+		peterPaul.put("Paul", paulHas);    //we put that back into our map
+
+		peterHas = peterHas - (peterHas / 2);
+		peterPaul.put("Peter", peterHas);
+
+		return peterPaul;
 	}
 
 	/*
@@ -137,7 +148,28 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+		//new Map<String, Integer> peterPaulPartnership = new HashMap<>();
+		int combinedCont;
+		int peterHas = peterPaul.get("Peter");
+		int paulHas = peterPaul.get("Paul");
+		int paulCont = 0;
+		int peterCont = 0;
+
+		if ((peterHas < 5000) || (paulHas < 10000)) {
+			return peterPaul;
+		}
+		peterCont = peterHas / 4;
+		peterHas = peterCont * 3;
+		peterPaul.put("Peter", peterHas);
+
+		paulCont = paulHas / 4;
+		paulHas = paulCont * 3;
+		peterPaul.put("Paul", paulHas);
+
+		combinedCont = peterCont + paulCont;
+		peterPaul.put("PeterPaulPartnership", combinedCont);
+
+		return peterPaul;
 	}
 
 	/*
@@ -165,7 +197,9 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> wordCount(String[] words) {
-		return null;
+		Map<String, Integer> wordCount = new HashMap<>();
+
+		return wordCount;
 	}
 
 	/*
