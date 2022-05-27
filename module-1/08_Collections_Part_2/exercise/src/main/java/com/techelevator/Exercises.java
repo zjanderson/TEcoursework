@@ -181,7 +181,22 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
-		return null;
+
+		Map<String, String> firstLastChar = new HashMap<>();
+
+		for (int i = 0; i < words.length; i++) {
+			String currentWord = words[i];
+			char firstLetter = currentWord.charAt(0);
+			char lastLetter = currentWord.charAt(currentWord.length()-1);
+			String firstLetterString = Character.toString(firstLetter);
+			String lastLetterString = Character.toString(lastLetter);
+
+			firstLastChar.put(firstLetterString, lastLetterString);
+
+			
+		}
+		
+		return firstLastChar;
 	}
 
 	/*
@@ -197,9 +212,25 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> wordCount(String[] words) {
-		Map<String, Integer> wordCount = new HashMap<>();
 
-		return wordCount;
+		Map<String, Integer> numOfStrings = new HashMap<>();
+		// a 1, b 1, a 2, c 2, b 3
+		int counter = 1;
+
+		for (int i = 0; i < words.length; i++) {
+
+			if (numOfStrings.containsKey(words[i])) {
+				counter++;
+				//numOfStrings.put(words[i], counter);
+			}else  {
+				counter = 1;
+			}
+
+			numOfStrings.put(words[i], counter);
+
+		}
+
+		return numOfStrings;
 	}
 
 	/*
@@ -261,6 +292,17 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
+
+		//public int last2(String str) {
+		//	int count = 0;
+		//	for (int i = 0; i < str.length() - 2; i++) {
+		//		if (str.substring(i, i + 2).equals(str.substring(str.length() - 2))) {
+		//			count++;
+		//		}
+		//	}
+		//	return count;
+		//}
+
 		return null;
 	}
 
