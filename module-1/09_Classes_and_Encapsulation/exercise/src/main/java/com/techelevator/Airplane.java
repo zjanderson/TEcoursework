@@ -53,13 +53,13 @@ public class Airplane {
         return bookedFirstClassSeats;
     }
 
-    public void getAvailableFirstClassSeats(int availableFirstClassSeats) { /////idk if I need this, since it's derived
-        this.availableFirstClassSeats = availableFirstClassSeats;
+    public int getAvailableFirstClassSeats() { /////idk if I need this, since it's derived
+       return availableFirstClassSeats = (totalFirstClassSeats - bookedFirstClassSeats);
     }
 
-    public int getAvailableFirstClassSeats() {
-        return availableFirstClassSeats;
-    }
+//    public int getAvailableFirstClassSeats() {
+  //      return availableFirstClassSeats;
+  //  }
     public int getTotalCoachSeats() {
         return totalCoachSeats;
     }
@@ -67,13 +67,13 @@ public class Airplane {
         return bookedCoachSeats;
     }
 
-    public void getAvailableCoachSeats(int availableCoachSeats) { ////same not as above, do i need this??
-        this.availableCoachSeats = availableCoachSeats;
+    public int getAvailableCoachSeats() { ////same not as above, do i need this??
+       return availableCoachSeats = totalCoachSeats - bookedCoachSeats;
     }
 
-    public int getAvailableCoachSeats() {
-        return availableCoachSeats;
-    }
+//    public int getAvailableCoachSeats() {
+//        return availableCoachSeats;
+//    }
 
 
 
@@ -93,13 +93,14 @@ public class Airplane {
         //if forFirstClass is true, check if totalNumberOfSeats > availableFirstClassSeats
         //if that's true, BookedFirstClassSeats = BookedFirstClassSeats + availableFirstClassSeats. same for coach.
         if (forFirstClass) {
-            if (totalNumberOfSeats > this.availableFirstClassSeats) {  //added this. to the availableFirstClassSeats
-                this.bookedFirstClassSeats = this.bookedFirstClassSeats + totalNumberOfSeats;
+            if (totalNumberOfSeats < getAvailableFirstClassSeats()) {  //added this. to the availableFirstClassSeats
+                bookedFirstClassSeats = bookedFirstClassSeats + totalNumberOfSeats;
+               // availableFirstClassSeats = availableFirstClassSeats - bookedFirstClassSeats; //this is new 11pm
                 return true;
             }
         } else if (!forFirstClass){
-            if (totalNumberOfSeats > this.availableCoachSeats) {
-                this.bookedCoachSeats = this.bookedCoachSeats + totalNumberOfSeats;
+            if (totalNumberOfSeats < getAvailableCoachSeats()) {
+                bookedCoachSeats = bookedCoachSeats + totalNumberOfSeats;
                 return true;
             }
         }
