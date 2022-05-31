@@ -258,7 +258,18 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
-		return null;
+		Map<String, Boolean> multWords  = new HashMap<>();
+		//1)iterate over each word, and 2) check if word is in map = 3)if so update words value to be true
+		//if not, put word into map with false
+		for (String word : words) {
+			if (multWords.containsKey(word)) {
+				multWords.put(word, true);
+			} else {
+				multWords.put(word, false);
+			}
+		}
+
+		return multWords;
 	}
 
 	/*
@@ -292,18 +303,24 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
+		Map<String, Integer> result = new HashMap<>();
 
-		//public int last2(String str) {
-		//	int count = 0;
-		//	for (int i = 0; i < str.length() - 2; i++) {
-		//		if (str.substring(i, i + 2).equals(str.substring(str.length() - 2))) {
-		//			count++;
-		//		}
-		//	}
-		//	return count;
-		//}
+		for (String word : words) {
+			int count = 0;
+			String last2chars = word.substring(word.length() - 2);
 
-		return null;
+			for (int i = 0; i < word.length() - 2; i++) {
+				String current2Chars = word.substring(i, i + 2);
+
+				if (last2chars.equals(current2Chars)) {
+					count++;
+				}
+
+				
+			}
+		}
+		return result;
+
 	}
 
 }

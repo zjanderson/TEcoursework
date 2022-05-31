@@ -11,10 +11,10 @@ public class Lecture {
         Card aceOfSpades = new Card(suit, "Ace", false);
         Card twoOfClubs = new Card("Clubs", "Two", true);
 
-        aceOfSpades.color();
+        aceOfSpades.getColor();
         aceOfSpades.getSuit();
         aceOfSpades.setSuit("Hearts");
-        aceOfSpades.color();
+        aceOfSpades.getColor();
 
         Card aceOfDiamonds = new Card("Diamonds", "Ace");
         Card aceOfHearts = new Card("Hearts", "Ace");

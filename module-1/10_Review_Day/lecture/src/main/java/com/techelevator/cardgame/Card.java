@@ -42,7 +42,7 @@ public class Card {
     }
 
     // Derived property
-    public String color() {
+    public String getColor() {
         if (suit.equals("Clubs") || suit.equals("Spades")) {
             return "Black";
         }
