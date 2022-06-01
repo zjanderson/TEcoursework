@@ -6,6 +6,9 @@ public class Television {
     /*
         Fields, Properties, Member Variables, Instance Variables
      */
+
+    private static final int MAX_VOLUME = 10;
+
     private boolean isOn = false; //need getter, Whether or not the TV is turned on.
     private int currentChannel = 3; //need getter, The value for the current channel. Channel levels go between 3 and 18.
     private int currentVolume = 2; //need getter, The current volume level.
@@ -56,5 +59,11 @@ public class Television {
         isOn = true;
         currentChannel = 3;
         currentVolume = 2;
+    }
+
+    public void raiseVolume() {
+        if (isOn && currentVolume < MAX_VOLUME) {
+            currentVolume++;
+        }
     }
 }

@@ -11,7 +11,7 @@ public class Auction {
 
 	public Auction(String itemForSale) {
 		this.itemForSale = itemForSale;
-		this.currentHighBid = new Bid("", 0);
+		this.currentHighBid = new Bid("", 0); //sets defaults to start the auction
 		allBids = new ArrayList<>();
 	}
 
