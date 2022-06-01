@@ -107,7 +107,7 @@ Implement the `BankCustomer` class. A bank customer has a list of `Accountable`s
 
 | Method Name                          | Return Type | Description                                           |
 | ------------------------------------ | ----------- | ----------------------------------------------------- |
-| `getAccounts()`                      | `Accountable[]` | Returns an array of the customer's accounts.
+| `getAccounts()`                      | `Accountable[]` | Returns an array of the customer's accounts. |
 | `addAccount(Accountable newAccount)` | `void`      | Adds `newAccount` to the customer's list of accounts. |
 
 \* Note: The `getAccounts()` method returns an array, but since you need to add accounts whenever the `addAccount()` method is called, you'll use a `List` to store the accounts.
