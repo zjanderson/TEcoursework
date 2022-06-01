@@ -1,6 +1,10 @@
 package com.techelevator;
 
 public class SavingsAccount extends BankAccount{ //need to call constructor of super!
+
+    public SavingsAccount(String accountHolderName, String accountNumber) {
+        super(accountHolderName, accountNumber);
+    }
     /*        Fields, Properties, Member Variables, Instance Variables     */
 
 
