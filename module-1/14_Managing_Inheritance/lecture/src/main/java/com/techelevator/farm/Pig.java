@@ -1,16 +1,14 @@
 package com.techelevator.farm;
 
-import java.math.BigDecimal;
-
 public class Pig extends FarmAnimal implements Sellable {
-    private BigDecimal price;
+    private final int price;
 
     public Pig() {
         super("Pig", "oink!");
-        price = new BigDecimal("300.00");
+        price = 1000;
     }
 
-    public BigDecimal getPrice() {
+    public int getPrice() {
         return price;
     }
 }

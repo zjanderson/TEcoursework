@@ -19,7 +19,7 @@ public class OldMacdonald {
 			System.out.println();
 		}
 
-		Sellable[] sellables = new Sellable[] {new Cow(), new Pig(), new Egg()};
+		Sellable[] sellables = new Sellable[] { new Tractor(), new Pig(), new Egg()};
 
 		for (Sellable sellable : sellables) {
 			System.out.println("Step right up and get your " + sellable.getName());

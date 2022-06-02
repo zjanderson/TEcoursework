@@ -1,21 +1,19 @@
 package com.techelevator.farm;
 
-import java.math.BigDecimal;
-
 public class Egg implements Sellable {
-    private String name;
-    private BigDecimal price;
+    private final String name;
+    private final int price;
 
     public Egg() {
         name = "Egg";
-        price = new BigDecimal("0.25");
+        price = 1;
     }
 
     public String getName() {
         return name;
     }
 
-    public BigDecimal getPrice() {
+    public int getPrice() {
         return price;
     }
 }
