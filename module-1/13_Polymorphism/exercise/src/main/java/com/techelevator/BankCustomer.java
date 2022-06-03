@@ -11,7 +11,7 @@ public class BankCustomer {
 
     private String phoneNumber; //getter and setter, The phone number of the customer.
 
-    private List<Accountable> accounts; // getter - The getAccounts() method returns an array,
+    private List<Accountable> accounts = new ArrayList<>(); // getter - The getAccounts() method returns an array,
                                // but since you need to add accounts whenever the addAccount() method is called,
                                // you'll use a List to store the accounts.
                                // The customer's list of Accountables.
@@ -42,7 +42,31 @@ public class BankCustomer {
     }
 
 
- //   public ArrayList getAccounts() {
- //       return Accountable[accounts];
- //   }
+//    METHODS
+
+    public Accountable[] getAccounts() {
+        Accountable[] accountArray = new Accountable[accounts.size()];
+        for (int i = 0; i < accounts.size(); i++) {
+                accountArray[i] = accounts.get(i);  //take list, add each one to an array
+        }
+        return accountArray;
+    }
+
+
+
+    public void addAccount(Accountable newAccount) {
+        accounts.add(newAccount);
+    }
+
+    public boolean isVip() { //return true if sum off all accounts is >=$25k
+        int acctSum = 0;
+        for (Accountable account : accounts) {
+            acctSum = account.getBalance() + acctSum;
+        }
+        if (acctSum >= 25000) {
+            return true;
+        }
+        return false;
+    }
+
 }
