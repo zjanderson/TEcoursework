@@ -11,7 +11,7 @@ public class M1D08CollectionsPart2Exercise {
      *
      * ** A CLASSIC **
      *
-     * wordCount(["ba", "ba", "black", "sheep"]) → {"ba" : 2, "black": 1, "sheep": 1 }
+     * M1D08CollectionsPart2Exercise
      *
      */
     public Map<String, Integer> wordCount(String[] words) {

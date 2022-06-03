@@ -9,6 +9,8 @@ public class M1D06IntroObjectsStringsExercise {
 	 hasBad("badxx") → true
 	 hasBad("xbadxx") → true
 	 hasBad("xxbadxx") → false
+	 hasBad(null) -> false
+	 hasBad("") -> false
 	 */
     public boolean hasBad(String str) {
         return false;

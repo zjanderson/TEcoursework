@@ -12,8 +12,20 @@ public class SavingsAccount extends BankAccount {
         super(accountHolder, accountNumber);
     }
 
+    /*
+        starting balance 150, input 1 : output 147
+        starting balance 100, input 99 : output 100 (withdraw amnt too large, no withdrawal made)
+        starting balance 250, input 100 : output 150
+        starting balance 1000, input -1 : output 1000 (should not allow, and no withdrawal)
+        starting balance 50, input 1 : output 47
+
+     */
+
     @Override
     public int withdraw(int amountToWithdraw) {
+        if (amountToWithdraw < 0) {
+            return getBalance();
+        }
         // only perform transaction of positive $ and room for fee
         if (getBalance() - amountToWithdraw >= FEE) {
             super.withdraw(amountToWithdraw);
