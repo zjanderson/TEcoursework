@@ -27,5 +27,5 @@ public class M1D06IntroObjectsStringsExerciseTest {
         Assert.assertFalse(hasBad);
     }
 
-    
+
 }
