@@ -6,18 +6,15 @@ public class RectangleWall extends Wall{
     private int height; //getter
 
     //Constructors
-    public RectangleWall(String name, String color, int length, int height) {
-        name = getName();
-        color = getColor();
-        this.length = length;
-        this.height = height;
-    }
-    public RectangleWall() {
-        super(getName(), getColor());
-        this.length = length;
-        this.height = height;
 
+    public RectangleWall(String name, String color, int length, int height) {
+        //name = getName();
+        //color = getColor();
+        super(name, color);
+        this.length = length;
+        this.height = height;
     }
+
 
 
     // Getters and Setters
@@ -32,14 +29,15 @@ public class RectangleWall extends Wall{
 
 
     // Methods
+
+
+    @Override
     public int getArea() {
         return (length * height);
     }
-
-    @Override
     public String toString() {
-        return getName() + (length * height) +
-                " retangle";
+        return getName() + " (" + length + "x" + height + ") " +
+                "rectangle";
     }
 
 }
