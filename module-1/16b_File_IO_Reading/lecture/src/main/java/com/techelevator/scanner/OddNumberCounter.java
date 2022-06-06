@@ -4,31 +4,27 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class RTNValidator {
+public class OddNumberCounter {
 	
-	private static final int[] CHECKSUM_WEIGHTS = new int[] { 3, 7, 1, 3, 7, 1, 3, 7, 1 };
-
 	public static void main(String[] args) throws FileNotFoundException {
+		File inputFile = getInputFileFromUser();
 
 		printApplicationBanner();
 		
-		File inputFile = getInputFileFromUser();
 		try(Scanner fileScanner = new Scanner(inputFile)) {
 			while(fileScanner.hasNextLine()) {
 				String line = fileScanner.nextLine();
-				String rtn = line.substring(0, 9);
-				
-				if(checksumIsValid(rtn) == false) {
-					System.out.println(line);
-				}
+
+				int oddCount = oddCount(line);
+				System.out.println(line + " has " + oddCount + " odd numbers.");
 			}
 		}
 	}
 
 	private static void printApplicationBanner() {
-		System.out.println("******************");
-		System.out.println("RTN Validator 9000");
-		System.out.println("******************");
+		System.out.println("************************");
+		System.out.println("Odd Number Counter 9000");
+		System.out.println("************************");
 		System.out.println();
 	}
 
@@ -39,22 +35,27 @@ public class RTNValidator {
 		String path = userInput.nextLine();
 		
 		File inputFile = new File(path);
-		if(inputFile.exists() == false) { // checks for the existence of a file
+		if(!inputFile.exists()) { // checks for the existence of a file
 			System.out.println(path+" does not exist");
 			System.exit(1); // Ends the program
-		} else if(inputFile.isFile() == false) {
+		} else if(!inputFile.isFile()) {
 			System.out.println(path+" is not a file");
 			System.exit(1); // Ends the program
 		}
 		return inputFile;
 	}
 
-	private static boolean checksumIsValid(String routingNumber) {
-		int checksum = 0;
-		for(int i = 0; i < 9; i++) {
-			int digit = Integer.parseInt(routingNumber.substring(i, i+1));
-			checksum += digit * CHECKSUM_WEIGHTS[i];
+	private static int oddCount(String number) {
+		int oddNumberCount = 0;
+
+		for(int i = 0; i < number.length(); i++) {
+			int digit = Integer.parseInt(number.substring(i, i + 1));
+
+			if (digit % 2 == 1) {
+				oddNumberCount++;
+			}
 		}
-		return checksum % 10 == 0;
+
+		return oddNumberCount;
 	}
 }
