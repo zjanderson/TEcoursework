@@ -35,7 +35,7 @@ public class ExceptionsLecture {
 
 		System.out.println("I want to print the value of x: " + x);
 
-		System.exit(0);
+		System.exit(0);    //this immediately exits program, only here temporarily
 
 
 
