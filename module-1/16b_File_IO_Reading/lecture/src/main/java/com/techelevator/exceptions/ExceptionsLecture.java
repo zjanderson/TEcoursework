@@ -1,10 +1,47 @@
 package com.techelevator.exceptions;
 
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class ExceptionsLecture {
 
 	public static void main(String[] args) {
+
+		int x = -1;
+
+		try {
+
+			x = Integer.parseInt("Walt"); // if this is here, only the first exception occurs
+
+			try {
+				int[] array = { 1, 2, 3 };
+				for (int i = 0; i <= array.length; i++) {
+					System.out.println("Array[" + i + "] = " + array[i]);
+				}
+			} catch (ArrayIndexOutOfBoundsException e) {
+				// We can nest try-catch blocks
+				System.out.println("Oops, I went out of bounds");
+			} finally {
+				System.out.println("Finally always runs!");
+			}
+
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("This exception did not occur");
+		} catch (NumberFormatException e) {
+			System.out.println("Don't worry, we saved it.");
+		}  finally {
+			System.out.println("Finally runs no matter what");
+		}
+
+		System.out.println("I want to print the value of x: " + x);
+
+		System.exit(0);
+
+
+
+		/* ------------------------------------------------------------------ */
+
+
 		Scanner scan = new Scanner(System.in);
 		
 		/* By default, when an Exception is thrown, it will "bubble up" through the call stack until
@@ -21,7 +58,8 @@ public class ExceptionsLecture {
 			System.out.println(cities[2]);
 			System.out.println(cities[3]);  // This statement will throw an ArrayIndexOutOfBoundsException
 			System.out.println("are all in Ohio."); // This line won't execute because the previous statement throws an Exception
-		} catch(ArrayIndexOutOfBoundsException e) {
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
 			// Flow of control resumes here after the Exception is thrown
 			System.out.println("XXX   Uh-oh, something went wrong...   XXX");
 		}
