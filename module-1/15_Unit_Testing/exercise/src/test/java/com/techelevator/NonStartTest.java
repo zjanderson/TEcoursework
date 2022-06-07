@@ -28,4 +28,28 @@ public class NonStartTest {
         //assert
         Assert.assertEquals("", getPartialString);
     }
+
+    @Test
+    public void omit_first_char_concatenate_one_empty() {
+        //arrange
+        NonStart testNonStart = new NonStart();
+
+        //act
+        String getPartialString = testNonStart.getPartialString("", "ChickeNS");
+
+        //assert
+        Assert.assertEquals("hickeNS", getPartialString);
+    }
+
+    @Test
+    public void omit_first_char_concatenate_other_empty() {
+        //arrange
+        NonStart testNonStart = new NonStart();
+
+        //act
+        String getPartialString = testNonStart.getPartialString("ChickeNS", "");
+
+        //assert
+        Assert.assertEquals("hickeNS", getPartialString);
+    }
 }
