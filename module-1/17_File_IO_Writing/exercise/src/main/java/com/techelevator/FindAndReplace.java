@@ -23,7 +23,7 @@ public class FindAndReplace {
         File file = new File(sourceFile);
         if (!file.exists()) {
             System.out.println("This file does not exist, please enter a valid file path");
-
+            return;
         }
 
         // Following creates copy of source file w/requested replacements at this path. If the file exists, overwrite it.
@@ -31,7 +31,7 @@ public class FindAndReplace {
         System.out.println("What is the destination file? ");
         String destinationFile = userInput.nextLine();
 
-        try (Scanner dataInput = new Scanner(sourceFile); //this opens the file we're reading from
+        try (Scanner dataInput = new Scanner(file); //this opens the file we're reading from
              PrintWriter dataOutput = new PrintWriter(destinationFile)) { //this opens the file for writing/overwriting
             while (dataInput.hasNextLine()) {
                 String lineOfInput = dataInput.nextLine();
