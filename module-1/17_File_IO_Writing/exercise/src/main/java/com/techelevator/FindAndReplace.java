@@ -31,14 +31,15 @@ public class FindAndReplace {
         System.out.println("What is the destination file? ");
         String destinationFile = userInput.nextLine();
 
-        try (Scanner dataInput = new Scanner(sourceFile);
-            PrintWriter dataOutput = new PrintWriter(destinationFile)) {
-                while(dataInput.hasNextLine()) {
-                    String lineOfInput = dataInput.nextLine();
-                    dataOutput.println(lineOfInput.replace(searchWord, replacementWord));
-                }
+        try (Scanner dataInput = new Scanner(sourceFile); //this opens the file we're reading from
+             PrintWriter dataOutput = new PrintWriter(destinationFile)) { //this opens the file for writing/overwriting
+            while (dataInput.hasNextLine()) {
+                String lineOfInput = dataInput.nextLine();
+                dataOutput.println(lineOfInput.replace(searchWord, replacementWord));
+            }
         } catch (FileNotFoundException e) {
             System.err.println("Cannot create the destination file.");
+            e.printStackTrace();
         }
 
 
