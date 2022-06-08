@@ -9,7 +9,7 @@ public class WordSearch {
 	public static void main(String[] args) {
 
 		/*
-        Step 1: Prompt the user for a filesystem path and a word for which to search
+        Prompt the user for a filesystem path, a word for which to search, and whether the search is case-sensitive
          */
 		// Create a scanner for user input
 		Scanner userInput = new Scanner(System.in);
@@ -22,29 +22,43 @@ public class WordSearch {
 		String caseSensitive = userInput.nextLine();
 
 		/*
-        Step 2: Step Two: Open the file, handle errors
+        Open the file, handle errors
          */
 		// Create a File object using the given path
 		File fileToSearch = new File(filePath);
 
 		int lineNumber = 0;          // number of lines that are read in the file, returned along with the line text
 
+//		boolean isCaseNeeded;  // we need to determine whether we are searching case-sensitive or not
+
+//		if (isCaseNeeded = caseSensitive.contentEquals("Y")) {
+//
+//			}
+
+
 		////////
 		// Open the file we want to search
 		try (Scanner fileInput = new Scanner(fileToSearch)) {
             /* Loop until the end of file is reached
-            Step 3: Create a read loop and process the lines
+            Create a read loop and process the lines
             Loop until the end of file is reached */
 			while (fileInput.hasNextLine()) {
 				// Read the next line into 'lineOfText'
 				String lineOfText = fileInput.nextLine();
 				lineNumber++;  // Increment the line count.
-                /*
-                Step 4: does the line contain the word we are looking for?
-                */
-				if (lineOfText.contains(findWord)) {
-					System.out.println(lineNumber + ": " + lineOfText);  // Print the line containing searched word
+
+				if (caseSensitive.equals("Y") || (caseSensitive.equals("y"))) {
+
+					if (lineOfText.contains(findWord)) {
+						System.out.println(lineNumber + ": " + lineOfText);  // Print the line containing searched word
+					}
+				}else if (caseSensitive.equals("N") || (caseSensitive.equals("n"))) { //have to adjust for no case sensitivity
+					if (lineOfText.toLowerCase().contains(findWord.toLowerCase())) {
+						System.out.println(lineNumber + ": " + lineOfText);  // Print the line containing searched word
+					}
+
 				}
+
 
 			}
 
