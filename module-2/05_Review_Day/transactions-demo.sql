@@ -11,19 +11,20 @@ INSERT INTO account (balance) VALUES (100), (100); -- 2 accounts to start
 
 -- 1. An error will automatically rollback on commit.
 START TRANSACTION;
-
+UPDATE account SET balanceasdf = 1 WHERE account_id = 1;
+UPDATE account SET balance = 1 WHERE account_id = 2;
 COMMIT;
 
 -- 2. Updates and Deletes will lock the rows they affect.
 --    Selects and Inserts will release locks immediately.
 START TRANSACTION;
-
+UPDATE account SET balance = balance + 5 WHERE account_id = 1;
 COMMIT;
 
 -- 3. Updates, Inserts, and Deletes can cause non-repeatable reads or phantom rows
 -- when using READ COMMITTED isolation level.
 START TRANSACTION;
-
+SELECT * FROM account
 COMMIT;
 
 -- 4. REPEATABLE READ isolation level prevents phantom rows and non-repeatable reads.
