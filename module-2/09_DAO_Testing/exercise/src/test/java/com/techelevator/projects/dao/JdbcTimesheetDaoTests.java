@@ -4,6 +4,7 @@ import com.techelevator.projects.model.Timesheet;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.internal.verification.Times;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -29,27 +30,60 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {  //if we write these c
 
     @Test
     public void getTimesheet_returns_correct_timesheet_for_id() {
-        Assert.fail();
+        Timesheet timesheet = sut.getTimesheet(1);
+
+        assertTimesheetsMatch(TIMESHEET_1, timesheet);
     }
 
     @Test
     public void getTimesheet_returns_null_when_id_not_found() {
-        Assert.fail();
+        Timesheet timesheet = sut.getTimesheet(17);
+
+        Assert.assertNull(timesheet);
     }
 
     @Test
     public void getTimesheetsByEmployeeId_returns_list_of_all_timesheets_for_employee() {
-        Assert.fail();
+        List<Timesheet> timesheets = sut.getTimesheetsByEmployeeId(1);
+        Assert.assertEquals(2, timesheets.size()); //should return two timesheets for employee_id 1, fails here, not getting 2nd timesheet
+        assertTimesheetsMatch(TIMESHEET_1, timesheets.get(0));
+        assertTimesheetsMatch(TIMESHEET_2, timesheets.get(1));
+
+        List<Timesheet> timesheets2nd = sut.getTimesheetsByEmployeeId(2);
+        Assert.assertEquals(2, timesheets2nd.size()); //should return two timesheets for employee_id 2
+        assertTimesheetsMatch(TIMESHEET_3, timesheets2nd.get(0));
+        assertTimesheetsMatch(TIMESHEET_4, timesheets2nd.get(1));
+
     }
 
     @Test
     public void getTimesheetsByProjectId_returns_list_of_all_timesheets_for_project() {
-        Assert.fail();
+        List<Timesheet> timesheets = sut.getTimesheetsByProjectId(1);  //these lists are returning 2 each, method may call by employee id?
+        Assert.assertEquals(3, timesheets.size());
+        assertTimesheetsMatch(TIMESHEET_1, timesheets.get(0));
+        assertTimesheetsMatch(TIMESHEET_2, timesheets.get(1));
+        assertTimesheetsMatch(TIMESHEET_3, timesheets.get(2));
+
+        timesheets = sut.getTimesheetsByProjectId(2);
+        Assert.assertEquals(1, timesheets.size());
+        assertTimesheetsMatch(TIMESHEET_4, timesheets.get(0));
+
+
     }
 
     @Test
     public void createTimesheet_returns_timesheet_with_id_and_expected_values() {
-        Assert.fail();
+        Timesheet createdTimesheet = new Timesheet(5, 2, 2,
+                LocalDate.parse("2021-05-01"), 26.0, true, "Timesheet 5");
+
+        createdTimesheet = sut.createTimesheet(createdTimesheet);
+
+        int newId = createdTimesheet.getTimesheetId();
+        Assert.assertEquals(newId, 5);
+
+
+
+
     }
 
     @Test
