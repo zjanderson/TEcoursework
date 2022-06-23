@@ -15,17 +15,21 @@ public class JdbcStateDaoTests extends BaseDaoTests {
 
     private JdbcStateDao sut;
 
-    @Before
+    @Before //Arrange for all following tests, so we can just Act and Assert in the @Test methods
     public void setup() {
         sut = new JdbcStateDao(dataSource);
     }
 
     @Test
     public void getState_returns_correct_state_for_abbreviation() {
+        //Act
         State state = sut.getState("AA");
+        //Assert
         assertStatesMatch(STATE_A, state);
 
+        //Act
         state = sut.getState("BB");
+        //Assert
         assertStatesMatch(STATE_B, state);
     }
 

@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class JdbcParkDaoTests extends BaseDaoTests {
 
@@ -25,7 +26,15 @@ public class JdbcParkDaoTests extends BaseDaoTests {
 
     @Test
     public void getPark_returns_correct_park_for_id() {
-        Assert.fail();
+       //Arrange
+        int parkId = 2;
+
+        //Act
+        Park actualPark = sut.getPark(parkId);
+
+        //Assert
+        assertParksMatch(PARK_2, actualPark);
+
     }
 
     @Test
@@ -35,37 +44,103 @@ public class JdbcParkDaoTests extends BaseDaoTests {
 
     @Test
     public void getParksByState_returns_all_parks_for_state() {
-        Assert.fail();
+      //Arrange
+        String stateAbbreviation = "AA";
+
+        //Act
+        List<Park> parks =  sut.getParksByState(stateAbbreviation);
+
+        //Assert
+        Assert.assertNotNull(parks);
+        Assert.assertEquals(2, parks.size()); //expect size of two because our test_data shows two in state AA
+        assertParksMatch(PARK_1, parks.get(0));
+        assertParksMatch(PARK_3, parks.get(1));
     }
 
     @Test
     public void getParksByState_returns_empty_list_for_abbreviation_not_in_db() {
-        Assert.fail();
+        //Arrange
+        String stateAbbreviation = "XX";
+
+        //Act
+        List<Park> parks =  sut.getParksByState(stateAbbreviation);
+
+        //Assert
+        Assert.assertNotNull(parks);
+        Assert.assertEquals(0, parks.size()); //expect size of zero because our test_data shows state XX doesn't exist
     }
 
     @Test
     public void createPark_returns_park_with_id_and_expected_values() {
-        Assert.fail();
+        //Arrange
+        Park newPark = new Park(-1, "DisneyWorld", LocalDate.of(1950, 2, 20), 1.5, false);
+
+        //Act - this will be an entire Park object
+        Park actualPark = sut.createPark(newPark);
+
+        //Assert
+        newPark.setParkId(actualPark.getParkId()); //since the parkId is generated in the createPark method, gotta reset this to assert equality
+        assertParksMatch(newPark, actualPark);
     }
 
     @Test
     public void created_park_has_expected_values_when_retrieved() {
-        Assert.fail();
+        //Arrange
+        Park newPark = new Park(-1, "DisneyWorld", LocalDate.of(1950, 2, 20), 1.5, false);
+
+        //Act - this will be an entire Park object
+        Park actualPark = sut.createPark(newPark);
+        int insertedParkId = actualPark.getParkId();
+        Park retrievePark = sut.getPark(insertedParkId);
+
+        //Assert
+        newPark.setParkId(actualPark.getParkId()); //since the parkId is generated in the createPark method, gotta reset this to assert equality
+        assertParksMatch(newPark, retrievePark);
     }
 
     @Test
     public void updated_park_has_expected_values_when_retrieved() {
-        Assert.fail();
+        //Arrange - make a change to every field but the parkId
+        Park park1Updated = new Park(1, "Park 1 Updated", LocalDate.parse("1801-01-02"), 1000, false);
+
+        //Act
+        sut.updatePark(park1Updated); //this updates park_1
+
+        //Assert
+        Park actualUpdatedPark = sut.getPark(1); //this retrieves the updated park, getPark has to work for this to run, we tested it previously
+        assertParksMatch(park1Updated, actualUpdatedPark); //checks that the park we tried to insert matches what the result of our update became
+
     }
 
     @Test
     public void deleted_park_cant_be_retrieved() {
-        Assert.fail();
+        //Arrange
+        int parkIdToDelete = 1;
+
+        //Act
+        sut.deletePark(parkIdToDelete);
+
+        //Assert
+        Park actualPark = sut.getPark(parkIdToDelete); //since deletePark is a void, it doesn't return, so we have to go get it'
+        Assert.assertNull(actualPark);
     }
 
     @Test
     public void park_added_to_state_is_in_list_of_parks_by_state() {
-        Assert.fail();
+        //Arrange
+        int parkId = 1;
+        String stateAbbreviation = "BB";
+
+        //Act
+        sut.addParkToState(parkId, stateAbbreviation); //void method, will need to call it to make sure it worked in Assert
+        //Assert
+        List<Park> parksInBB = sut.getParksByState(stateAbbreviation);
+        Assert.assertNotNull(parksInBB);
+        Assert.assertEquals(2, parksInBB.size());
+        assertParksMatch(PARK_1, parksInBB.get(0));
+        assertParksMatch(PARK_2, parksInBB.get(1));
+
+
     }
 
     @Test
