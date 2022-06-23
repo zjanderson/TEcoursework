@@ -58,7 +58,41 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
     @Override
     public List<Employee> searchEmployeesByName(String firstNameSearch, String lastNameSearch) {
-        return List.of(new Employee());
+        List<Employee> employees = new ArrayList<>();
+
+        String sql = "SELECT employee_id, department_id, first_name, last_name, birth_date, hire_date " +
+                     "FROM employee WHERE first_name ILIKE ?" + " AND last_name ILIKE ?;";
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, "%" +firstNameSearch + "%", "%" + lastNameSearch + "%");
+
+        while(rowSet.next()) {
+            int employeeId = rowSet.getInt("employee_id");
+            int department_id = rowSet.getInt("department_id");
+            String firstName = rowSet.getString("first_name");
+            String lastName = rowSet.getString("last_name");
+            Date birthDate = rowSet.getDate("birth_date");
+            LocalDate birthDateLocal = null;
+            if (birthDate != null) {
+                birthDateLocal = birthDate.toLocalDate();
+            }
+            Date hireDate = rowSet.getDate("hire_date");
+            LocalDate hireDateLocal = null;
+            if (hireDate != null) {
+                hireDateLocal = birthDate.toLocalDate();
+            }
+
+            Employee employee = new Employee();
+            employee.setId(employeeId);
+            employee.setDepartmentId(department_id);
+            employee.setFirstName(firstName);
+            employee.setLastName(lastName);
+            employee.setBirthDate(birthDateLocal);
+            employee.setHireDate(hireDateLocal);
+
+            employees.add(employee);
+        }
+
+        return employees;
     }
 
     @Override
@@ -72,6 +106,13 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
     @Override
     public void removeEmployeeFromProject(int projectId, int employeeId) {
+         /* Unassign the employee from a project.
+         * @param projectId the project to remove the employee from
+         * @param employeeId the employee to remove */
+
+        String sql = "DELETE FROM project_employee WHERE project_id = ? AND employee_id = ?;";
+        jdbcTemplate.update(sql, projectId, employeeId);
+
     }
 
     @Override
