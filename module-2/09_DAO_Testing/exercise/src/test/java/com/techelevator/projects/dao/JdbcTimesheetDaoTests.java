@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.List;
 
-public class JdbcTimesheetDaoTests extends BaseDaoTests {
+public class JdbcTimesheetDaoTests extends BaseDaoTests {  //if we write these correctly, we'll find the bugs in timesheetDao
 
     private static final Timesheet TIMESHEET_1 = new Timesheet(1, 1, 1,
             LocalDate.parse("2021-01-01"), 1.0, true, "Timesheet 1");

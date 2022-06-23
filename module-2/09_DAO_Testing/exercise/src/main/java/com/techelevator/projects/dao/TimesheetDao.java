@@ -4,7 +4,7 @@ import com.techelevator.projects.model.Timesheet;
 
 import java.util.List;
 
-public interface TimesheetDao {
+public interface TimesheetDao {    //THERE ARE BUGS IN HERE, we test in jdbctimesheetdaotests to find them
 
     /**
      * Get a timesheet from the datastore that has the given id.
