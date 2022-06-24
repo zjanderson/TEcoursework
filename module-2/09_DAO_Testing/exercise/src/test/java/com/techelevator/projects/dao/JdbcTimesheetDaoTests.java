@@ -88,12 +88,28 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {  //if we write these c
 
     @Test
     public void created_timesheet_has_expected_values_when_retrieved() {
-        Assert.fail();
+        Timesheet createdTimesheet2 = new Timesheet(5, 2, 2,
+                LocalDate.parse("2021-05-01"), 26.0, true, "Timesheet 5");
+
+        createdTimesheet2 = sut.createTimesheet(createdTimesheet2);
+
+        assertTimesheetsMatch(createdTimesheet2, sut.getTimesheet(createdTimesheet2.getTimesheetId()));
+
     }
 
     @Test
     public void updated_timesheet_has_expected_values_when_retrieved() {
-        Assert.fail();
+        //Arrange
+        Timesheet timesheet1Updated = new Timesheet(1, 2, 2,
+                LocalDate.parse("2022-02-01"), 2.5, false, "Timesheet 1 updated");
+
+        //Act'
+        sut.updateTimesheet(timesheet1Updated);
+
+        //Assert
+        Timesheet actualTimesheet = sut.getTimesheet(timesheet1Updated.getTimesheetId());
+        assertTimesheetsMatch(timesheet1Updated, actualTimesheet);
+
     }
 
     @Test

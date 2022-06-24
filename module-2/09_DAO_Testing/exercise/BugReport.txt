@@ -1,12 +1,12 @@
 Bug 1
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getTimesheetsByEmployeeId_returns_list_of_all_timesheets_for_employee
 
-Expected output:
+Expected output: 2
 
-Actual output:
+Actual output: 1
 
-How did you fix this bug?
+How did you fix this bug? in JdbcTimesheetDao method getTimesheetsByEmployeeId, there was an 'if' loop instead of 'while', so it was only running thru loop once
 
 
 Bug 2
@@ -22,13 +22,13 @@ How did you fix this bug? in JdbcTimesheetDao, changed "WHERE employee_id = ? " 
 
 Bug 3
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: updated_timesheet_has_expected_values_when_retrieved
 
-Expected output:
+Expected output: false
 
-Actual output:
+Actual output: true
 
-How did you fix this bug?
+How did you fix this bug? added the billable column and get.isBillable to the method in JdbcTimesheetDao.java to update all columns
 
 
 Bug 4
