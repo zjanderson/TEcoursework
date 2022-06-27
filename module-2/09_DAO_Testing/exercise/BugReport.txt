@@ -33,11 +33,11 @@ How did you fix this bug? added the billable column and get.isBillable to the me
 
 Bug 4
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getBillableHours_returns_correct_total
 
-Expected output:
+Expected output: only count hours if billable is true
 
-Actual output:
+Actual output: counts all hours, whether or not billable
 
-How did you fix this bug?
+How did you fix this bug? in getBillableHours, add a check for isBillable
 

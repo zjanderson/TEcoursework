@@ -130,6 +130,16 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {  //if we write these c
         //Assert
         Assert.assertEquals(2.5, sumOfHoursProjectOneEmpOne, 0.001);
 
+        //Arrange
+        int employeeID = 2;
+        int projectID = 2;
+
+        //Act
+        double actualhours= sut.getBillableHours(employeeID, projectID);
+
+        //Assert
+        Assert.assertEquals(0, actualhours, 0.01);
+
     }
 
     private void assertTimesheetsMatch(Timesheet expected, Timesheet actual) {
