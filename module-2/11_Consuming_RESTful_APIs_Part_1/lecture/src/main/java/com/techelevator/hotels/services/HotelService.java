@@ -1,6 +1,5 @@
 package com.techelevator.hotels.services;
 
-import com.techelevator.hotels.model.City;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Review;
 import org.springframework.web.client.RestTemplate;
@@ -30,8 +29,5 @@ public class HotelService {
         return null;
     }
 
-    public City getWithCustomQuery(){
-        return null;
-    }
 
 }
