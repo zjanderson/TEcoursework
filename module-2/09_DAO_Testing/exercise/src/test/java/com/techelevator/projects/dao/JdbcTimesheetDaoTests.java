@@ -114,12 +114,22 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {  //if we write these c
 
     @Test
     public void deleted_timesheet_cant_be_retrieved() {
-        Assert.fail();
-    }
+        sut.deleteTimesheet(2);
+
+        Timesheet getThisTimesheet = sut.getTimesheet(2);
+        Assert.assertNull(getThisTimesheet);    }
 
     @Test
     public void getBillableHours_returns_correct_total() {
-        Assert.fail();
+        //Arrange
+        //use the timesheets given as static finals
+
+        //Act
+        double sumOfHoursProjectOneEmpOne = sut.getBillableHours(1,1);
+
+        //Assert
+        Assert.assertEquals(2.5, sumOfHoursProjectOneEmpOne, 0.001);
+
     }
 
     private void assertTimesheetsMatch(Timesheet expected, Timesheet actual) {
