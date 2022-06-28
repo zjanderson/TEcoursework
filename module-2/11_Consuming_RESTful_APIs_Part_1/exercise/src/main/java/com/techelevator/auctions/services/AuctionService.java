@@ -4,7 +4,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.techelevator.auctions.model.Auction;
 
-public class AuctionService {
+public class AuctionService {          // the entire homework is done in this class
 
     public static final String API_BASE_URL = "http://localhost:3000/auctions/";
     private RestTemplate restTemplate = new RestTemplate();
