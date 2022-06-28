@@ -32,9 +32,9 @@ To start the server, run the command `npm start`. If there aren't any errors, yo
 
 Before moving on to the next step, explore the web API using Postman. You can access the following endpoints:
 
-- GET: http://localhost:3000/auctions
-- GET: http://localhost:3000/auctions/{id} (try a number between 1 and 7 in place of `{id}`)
-- GET: http://localhost:3000/auctions?title_like=<*value*> (try a string like *watch* in place of `<value>`)
+- GET: http://localhost:3000/auctions    //if you issue get request, you get back list of options
+- GET: http://localhost:3000/auctions/{id} (try a number between 1 and 7 in place of `{id}`)  //if you issue get request, you get back one option
+- GET: http://localhost:3000/auctions?title_like=<*value*> (try a string like *watch* in place of `<value>`)   
 - GET: http://localhost:3000/auctions?currentBid_lte=<*value*> (try a number like 150 in place of `<value>`)
 
 ## Step Three: Review the starting code
