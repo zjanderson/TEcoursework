@@ -18,7 +18,17 @@ public class AuctionService {
 
 
     public Auction add(Auction newAuction) {
-        // place code here
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<Auction> entity = new HttpEntity<>(newAuction, headers);
+
+        String url = API_BASE_URL;
+
+        try {
+            return restTemplate.postForObject(url, entity, Auction.class);
+        } catch (RestClientResponseException) ////////////////////////paused here
+
         return null;
     }
 

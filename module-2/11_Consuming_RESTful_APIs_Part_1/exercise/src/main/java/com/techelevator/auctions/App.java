@@ -6,6 +6,7 @@ import com.techelevator.auctions.services.ConsoleService;
 
 public class App {
     private final ConsoleService consoleService = new ConsoleService();
+    private final AuctionService auctionService = new AuctionService();
 
     public static void main(String[] args) {
         App app = new App();
