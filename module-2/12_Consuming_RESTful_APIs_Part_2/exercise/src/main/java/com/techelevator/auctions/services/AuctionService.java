@@ -16,6 +16,7 @@ public class AuctionService {
     private RestTemplate restTemplate = new RestTemplate();
 
 
+
     public Auction add(Auction newAuction) {
         // place code here
         return null;
