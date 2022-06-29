@@ -69,7 +69,7 @@ public class HotelController {
                 }
             }
             return filterHotels;
-            
+
     }
 
         /*
