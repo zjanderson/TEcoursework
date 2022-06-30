@@ -1,5 +1,6 @@
 package com.techelevator.reservations.dao;
 
+import com.techelevator.reservations.exception.HotelNotFoundException;
 import com.techelevator.reservations.model.Hotel;
 
 import java.util.List;
@@ -10,6 +11,6 @@ public interface HotelDao {
 
     void create(Hotel hotel);
 
-    Hotel get(int id);
+    Hotel get(int id) throws HotelNotFoundException;
 
 }

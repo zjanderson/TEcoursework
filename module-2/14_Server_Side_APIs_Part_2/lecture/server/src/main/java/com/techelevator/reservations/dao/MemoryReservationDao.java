@@ -54,17 +54,27 @@ public class MemoryReservationDao implements ReservationDao {
     }
 
     @Override
-    public Reservation get(int reservationID) {
+    public Reservation get(int reservationID) throws ReservationNotFoundException {
         for (Reservation res : reservations) {
             if (res.getId() == reservationID) {
                 return res;
             }
         }
-        return null;
+        throw new ReservationNotFoundException();
     }
 
     @Override
-    public Reservation create(Reservation reservation, int hotelID) {
+    public Reservation create(Reservation reservation, int hotelID) throws HotelNotFoundException {
+        boolean hotelExists = false;
+        for (Hotel hotel : hotelDao.list()){
+            if (hotel.getId() == hotelID) {
+                hotelExists = true;
+                break;
+            }
+        }
+        if (!hotelExists) {
+            throw new HotelNotFoundException();
+        }
         reservation.setId(getMaxIdPlusOne());
         reservations.add(reservation);
         return reservation;
@@ -115,20 +125,20 @@ public class MemoryReservationDao implements ReservationDao {
         reservations.add(new Reservation(getMaxIdPlusOne(),
                 hotels.get(0).getId(),
                 "John Smith",
-                now.toString(),
-                now.plusDays(3).toString(),
+                now,
+                now.plusDays(3),
                 2));
         reservations.add(new Reservation(getMaxIdPlusOne(),
                 hotels.get(0).getId(),
                 "Sam Turner",
-                now.toString(),
-                now.plusDays(5).toString(),
+                now,
+                now.plusDays(5),
                 4));
         reservations.add(new Reservation(getMaxIdPlusOne(),
                 hotels.get(0).getId(),
                 "Mark Johnson",
-                now.plusDays(7).toString(),
-                now.plusDays(10).toString(),
+                now.plusDays(7),
+                now.plusDays(10),
                 2));
     }
 

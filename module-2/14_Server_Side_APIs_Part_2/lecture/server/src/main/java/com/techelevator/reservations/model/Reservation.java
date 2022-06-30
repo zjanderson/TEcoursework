@@ -1,15 +1,50 @@
 package com.techelevator.reservations.model;
 
-public class Reservation {
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
+import javax.validation.constraints.*;
+import java.time.LocalDate;
+
+public class Reservation {
+    @Min(value = 1, message = "ID must be greater than zero")
     private int id;
+    @Min(value = 1, message = "hotelID must be greater than zero")
     private int hotelID;
+    @NotNull
+    @NotBlank
     private String fullName;
-    private String checkinDate;
-    private String checkoutDate;
+    @NotNull
+    @FutureOrPresent
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate checkinDate;
+    @NotNull
+    @Future
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate checkoutDate;
+
+    @AssertTrue
+    private boolean isCheckOutDateAfterCheckInDate() {
+        if (checkoutDate.compareTo(checkinDate) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @AssertTrue
+    private boolean isLengthOfStayLessThan6() {
+        if (checkoutDate.minusDays(6).compareTo(checkinDate) >= 0) {
+            return true;
+        }
+        return false;
+
+    }
+
+    @Min(value = 1, message = "guests must be greater than zero")
+    @Max(value = 5, message = "guests must be less than 6")
     private int guests;
 
-    public Reservation(int id, int hotelID, String fullName, String checkinDate, String checkoutDate, int guests) {
+    public Reservation(int id, int hotelID, String fullName, LocalDate checkinDate, LocalDate checkoutDate, int guests) {
         this.id = id;
         this.hotelID = hotelID;
         this.fullName = fullName;
@@ -42,19 +77,19 @@ public class Reservation {
         this.fullName = fullName;
     }
 
-    public String getCheckinDate() {
+    public LocalDate getCheckinDate() {
         return checkinDate;
     }
 
-    public void setCheckinDate(String checkinDate) {
+    public void setCheckinDate(LocalDate checkinDate) {
         this.checkinDate = checkinDate;
     }
 
-    public String getCheckoutDate() {
+    public LocalDate getCheckoutDate() {
         return checkoutDate;
     }
 
-    public void setCheckoutDate(String checkoutDate) {
+    public void setCheckoutDate(LocalDate checkoutDate) {
         this.checkoutDate = checkoutDate;
     }
 

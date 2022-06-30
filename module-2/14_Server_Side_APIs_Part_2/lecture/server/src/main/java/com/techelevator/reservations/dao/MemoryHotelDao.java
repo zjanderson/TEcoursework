@@ -1,5 +1,6 @@
 package com.techelevator.reservations.dao;
 
+import com.techelevator.reservations.exception.HotelNotFoundException;
 import com.techelevator.reservations.model.Address;
 import com.techelevator.reservations.model.Hotel;
 
@@ -19,13 +20,13 @@ public class MemoryHotelDao implements HotelDao {
     }
 
     @Override
-    public Hotel get(int id) {
+    public Hotel get(int id) throws HotelNotFoundException {
         for (Hotel hotel : hotels) {
             if (hotel.getId() == id) {
                 return hotel;
             }
         }
-        return null;
+        throw new HotelNotFoundException();
     }
 
     @Override

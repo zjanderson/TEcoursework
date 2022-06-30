@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 //we will need a @RestController annotation at the class leven to get the program that this is a controller!!
 @RestController
@@ -111,8 +112,43 @@ public class HotelController {
 
 
 //    @RequestMapping(path = "/reservations", method = RequestMethod.GET)  //this is one way, or we can use helper method below
+
+    /*
+    GET http://localhost:8080/reservations - get all reservations
+
+    GET http://localhost:8080/reservations?name_like={something here} - filter by name (contains search)
+
+    GET http://localhost:8080/reservations?guests_lte={some int} - filter by max # of guests
+
+    GET http://localhost:8080/reservations?name_like={something here}&?guests_lte={some int} - filter by both
+     */
     @GetMapping("/reservations")
-    public List<Reservation> listReservations() {
+    public List<Reservation> listReservations(@RequestParam(name = "name_like", required = false) String nameLike,
+                                              @RequestParam(name="guests_lte", required = false, defaultValue = "0") int guestLte) {
+        List<Reservation> allReservations = reservationDao.findAll();
+
+        if (nameLike == null && guestLte == -1) {
+            return allReservations;
+        }
+
+        List<Reservation> filteredReservations = new ArrayList<>();
+
+        if (nameLike != null) {
+            for (Reservation r : allReservations) {
+                if (r.getFullName().toLowerCase().contains(nameLike.toLowerCase()); { //idk why this is an error
+                    filteredReservations.add(r);
+                }
+            }
+            return filteredReservations;
+        }
+
+        if (guestLte > 0) {
+            for (Reservation r : allReservations) {
+                if (r.getGuests() <= guestLte) {
+                    filteredReservations.add(r);
+                }
+            }
+        } //need to look at lecture @ 38 min mark to follow along with this to map to hw
 
         return  reservationDao.findAll();
     }
