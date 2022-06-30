@@ -27,7 +27,11 @@ public class AuctionService {
 
         try {
             return restTemplate.postForObject(url, entity, Auction.class);
-        } catch (RestClientResponseException) ////////////////////////paused here
+        } catch (RestClientResponseException e) {
+            BasicLogger.log(e.getRawStatusCode() + " - " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
 
         return null;
     }
