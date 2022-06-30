@@ -22,13 +22,17 @@ public class AuctionService {          // the entire homework is done in this cl
     }
 
     public Auction[] getAuctionsMatchingTitle(String title) {
-        // call api here
-        return null;
+        String url = API_BASE_URL + "?title_like=" + title;
+        Auction[] auctionsByTitle = restTemplate.getForObject(url, Auction[].class);
+        return auctionsByTitle;
+
     }
 
     public Auction[] getAuctionsAtOrBelowPrice(double price) {
-        // call api here
-        return null;
+        String url = API_BASE_URL + "?currentBid_lte=" + price;
+        Auction[] auctionsUnderPrice = restTemplate.getForObject(url, Auction[].class);
+        return auctionsUnderPrice;
+
     }
 
 }
