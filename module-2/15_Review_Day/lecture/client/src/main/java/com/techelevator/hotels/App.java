@@ -2,13 +2,16 @@ package com.techelevator.hotels;
 
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Reservation;
+import com.techelevator.hotels.model.Review;
 import com.techelevator.hotels.services.ConsoleService;
 import com.techelevator.hotels.services.HotelService;
+import com.techelevator.hotels.services.ReviewService;
 
 public class App {
 
     private final ConsoleService consoleService = new ConsoleService();
     private final HotelService hotelService = new HotelService();
+    private final ReviewService reviewService = new ReviewService();
 
     public static void main(String[] args) {
         App app = new App();
@@ -31,13 +34,24 @@ public class App {
             } else if (menuSelection == 5) {
                 handleDeleteReservation();
             }
-            else if (menuSelection == 0) {
-                continue;
-            } else {
+            else if (menuSelection == 6) {
+                handleGetReviewsForHotel();
+            } else if (menuSelection == 7) {
+
+            }
+            else {
                 // anything else is not valid
                 System.out.println("Invalid Selection");
             }
             consoleService.pause();
+        }
+    }
+
+    private void handleGetReviewsForHotel() {
+        int hotelId = 1;
+        Review[] reviews = reviewService.getReviewsForHotel(hotelId);
+        if (reviews != null) {
+            consoleService.printReviews(reviews);
         }
     }
 

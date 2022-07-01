@@ -2,6 +2,7 @@ package com.techelevator.hotels.services;
 
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Reservation;
+import com.techelevator.hotels.model.Review;
 
 import java.util.Scanner;
 
@@ -28,6 +29,8 @@ public class ConsoleService {
         System.out.println("3: Create new Reservation for Hotel");
         System.out.println("4: Update existing Reservation for Hotel");
         System.out.println("5: Delete Reservation");
+        System.out.println("6: Get reviews for Hotel");
+        System.out.println("7: Create review");
         System.out.println("0: Exit");
         System.out.println();
     }
@@ -133,4 +136,11 @@ public class ConsoleService {
         System.out.println("An error occurred. Check the log for details.");
     }
 
+    public void printReviews(Review[] reviews) {
+        for (Review review : reviews) {
+            System.out.println("Review Id : " + review.getId());
+            System.out.println("Hotel Id : " + review.getHotelId());
+            System.out.println(""); // need to finish this out
+        }
+    }
 }
