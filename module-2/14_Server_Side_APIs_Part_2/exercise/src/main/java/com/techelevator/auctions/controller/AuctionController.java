@@ -2,6 +2,7 @@ package com.techelevator.auctions.controller;
 
 import java.util.List;
 
+import com.techelevator.auctions.exception.AuctionNoContentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import com.techelevator.auctions.dao.AuctionDao;
 import com.techelevator.auctions.exception.AuctionNotFoundException;
 import com.techelevator.auctions.model.Auction;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auctions")
@@ -41,8 +44,22 @@ public class AuctionController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "", method = RequestMethod.POST)
-    public Auction create(@RequestBody Auction auction) {
+    public Auction create(@Valid @RequestBody Auction auction) {
         return dao.create(auction);
+    }
+
+    @RequestMapping(path = "/{auctionId}", method = RequestMethod.PUT)
+    public Auction update(@PathVariable int auctionId,
+                          @Valid @RequestBody Auction auction) throws AuctionNotFoundException {
+        auction.setId(auctionId);
+
+        return dao.update(auction, auctionId);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/{auctionId}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable int auctionId) throws AuctionNotFoundException {
+        dao.delete(auctionId);
     }
 
 
