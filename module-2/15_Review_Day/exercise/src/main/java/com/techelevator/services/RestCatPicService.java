@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.techelevator.model.CatPic;
 
 @Component
-public class RestCatPicService implements CatPicService {
+public class RestCatPicService implements CatPicService { //need to work in here too
 
 	@Override
 	public CatPic getPic() {

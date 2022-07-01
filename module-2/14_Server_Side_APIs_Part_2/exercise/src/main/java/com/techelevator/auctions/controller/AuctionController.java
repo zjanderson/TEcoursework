@@ -3,12 +3,8 @@ package com.techelevator.auctions.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import com.techelevator.auctions.dao.AuctionDao;
 import com.techelevator.auctions.exception.AuctionNotFoundException;
@@ -43,6 +39,7 @@ public class AuctionController {
         return dao.get(id);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "", method = RequestMethod.POST)
     public Auction create(@RequestBody Auction auction) {
         return dao.create(auction);

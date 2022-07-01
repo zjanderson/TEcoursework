@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.techelevator.model.CatFact;
 
 @Component
-public class RestCatFactService implements CatFactService {
+public class RestCatFactService implements CatFactService { //need to work in here, too
 
 	@Override
 	public CatFact getFact() {

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcCatCardDao implements CatCardDao {
+public class JdbcCatCardDao implements CatCardDao { //this is provided, don't change things
 
 	private JdbcTemplate jdbcTemplate;
 	private Logger log = LoggerFactory.getLogger(getClass());

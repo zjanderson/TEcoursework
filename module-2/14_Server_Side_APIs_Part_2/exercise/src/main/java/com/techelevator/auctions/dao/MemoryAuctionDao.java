@@ -75,7 +75,7 @@ public class MemoryAuctionDao implements AuctionDao {
         for (int i = 0; i < auctions.size(); i++) {
             if (auctions.get(i).getId() == id) {
                 // the auction id doesn't need to be passed with the auction object
-                // but if it is lets handle that
+                // but if it is let's handle that
                 if( result.getId() == 0 ) {
                     result.setId(id);
                 }
@@ -94,7 +94,7 @@ public class MemoryAuctionDao implements AuctionDao {
     @Override
     public void delete(int id) throws AuctionNotFoundException {
         boolean found = false;
-        // avoid concurrent modification excepiton using iterator
+        // avoid concurrent modification exception using iterator
         for(Iterator<Auction> iterator = auctions.iterator(); iterator.hasNext(); ) {
             Auction auction = iterator.next();
             if(auction.getId() == id) {
