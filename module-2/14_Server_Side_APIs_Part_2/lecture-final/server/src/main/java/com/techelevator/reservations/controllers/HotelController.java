@@ -126,13 +126,12 @@ public class HotelController {
      * Create a new reservation for a given hotel
      *
      * @param reservation
-     * @param hotelID
      */
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/hotels/{id}/reservations", method = RequestMethod.POST)
-    public Reservation addReservation(@Valid @RequestBody Reservation reservation, @PathVariable("id") int hotelID)
+    @RequestMapping(path = "/reservations", method = RequestMethod.POST)
+    public Reservation addReservation(@Valid @RequestBody Reservation reservation)
             throws HotelNotFoundException {
-        return reservationDao.create(reservation, hotelID);
+        return reservationDao.create(reservation, reservation.getHotelID());
     }
 
     @RequestMapping(path = "/reservations/{reservationId}", method = RequestMethod.PUT)

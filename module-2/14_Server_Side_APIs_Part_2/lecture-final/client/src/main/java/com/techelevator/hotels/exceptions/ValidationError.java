@@ -1,7 +1,6 @@
-package com.techelevator.hotels.model;
+package com.techelevator.hotels.exceptions;
 
 public class ValidationError {
-
     private String defaultMessage;
     private String field;
     private String rejectedValue;

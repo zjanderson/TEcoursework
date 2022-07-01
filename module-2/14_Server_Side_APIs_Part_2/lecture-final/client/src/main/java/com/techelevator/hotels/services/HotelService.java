@@ -1,9 +1,11 @@
 package com.techelevator.hotels.services;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.techelevator.hotels.exceptions.BadRequestException;
+import com.techelevator.hotels.exceptions.BadRequest;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Reservation;
-import com.techelevator.hotels.model.ValidationError;
 import com.techelevator.util.BasicLogger;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,7 +25,7 @@ public class HotelService {
     /**
      * Create a new reservation in the hotel reservation system
      */
-    public Reservation addReservation(Reservation newReservation) throws IOException {
+    public Reservation addReservation(Reservation newReservation) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Reservation> entity = new HttpEntity<>(newReservation, headers);
@@ -31,16 +33,22 @@ public class HotelService {
         Reservation returnedReservation = null;
         try {
            returnedReservation  = restTemplate.postForObject(API_BASE_URL + "reservations", entity, Reservation.class);
+        } catch (ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
         } catch (RestClientResponseException e) {
             BasicLogger.log(e.getMessage());
 
-            ObjectMapper mapper = new ObjectMapper();
-            ValidationError[] errors =  mapper.readValue(e.getResponseBodyAsByteArray(), ValidationError[].class);
-
-            for (ValidationError error : errors) {
-                System.out.println(error.getDefaultMessage());
+            if (e.getRawStatusCode() == 400) {
+                ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                try {
+                    BadRequest badRequest = mapper.readValue(e.getResponseBodyAsByteArray(), BadRequest.class);
+                    throw new BadRequestException(e.getStatusText(), badRequest.getErrors());
+                } catch (IOException ioException) {
+                    throw new BadRequestException(e.getStatusText(), null);
+                }
             }
         }
+
         return returnedReservation;
     }
 
