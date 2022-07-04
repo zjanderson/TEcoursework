@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CatController {  //we work in here, partially
+                              //Hint: Start w/the controller method that provides a new, randomly created card.
 
     private CatCardDao catCardDao;
     private CatFactService catFactService;
@@ -17,6 +18,9 @@ public class CatController {  //we work in here, partially
         this.catFactService = catFactService;
         this.catPicService = catPicService;
     }
+
+//    Create a new, randomly created card here
+
 
 
 }
