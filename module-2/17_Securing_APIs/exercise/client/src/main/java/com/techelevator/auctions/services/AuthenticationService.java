@@ -7,7 +7,7 @@ import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
 
-public class AuthenticationService {
+public class AuthenticationService {  //SOME WORK IN HERE FOR STEP TWO
 
     private static final String API_BASE_URL = "http://localhost:8080/";
     private final RestTemplate restTemplate = new RestTemplate();

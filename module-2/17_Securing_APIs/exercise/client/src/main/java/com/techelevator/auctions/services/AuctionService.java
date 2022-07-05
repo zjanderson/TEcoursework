@@ -7,7 +7,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
-public class AuctionService {
+public class AuctionService {  // SOME WORK IN HERE FOR STEP 3
 
     public static final String API_BASE_URL = "http://localhost:8080/auctions/";
     private RestTemplate restTemplate = new RestTemplate();

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/auctions")
-public class AuctionController {
+public class AuctionController {  //TWO LINES OF PREAUTHORIZE CODE IN HERE FOR STEP 4, WORK FOR STEP 5, AND /WHOAMI FOR STEP 6
 
     private AuctionDao dao;
 
