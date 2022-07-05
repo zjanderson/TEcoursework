@@ -7,6 +7,8 @@ import com.techelevator.model.CatFact;
 import com.techelevator.model.CatPic;
 import com.techelevator.services.CatFactService;
 import com.techelevator.services.CatPicService;
+<<<<<<< HEAD
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,11 +17,15 @@ import java.util.List;
 @RestController
 public class CatController {  //we work in here, partially
                               //Hint: Start w/the controller method that provides a new, randomly created card.
+=======
 import org.springframework.web.bind.annotation.RestController;
+
 @RestController
 public class CatController {
+>>>>>>> 7f83c5f6987db1f71d914d0546fede59f82f5bed
 
     private CatCardDao catCardDao;
+    private CatFactService catFactService;
     private CatPicService catPicService;
 
     public CatController(CatCardDao catCardDao, CatFactService catFactService, CatPicService catPicService) {
