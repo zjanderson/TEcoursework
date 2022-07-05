@@ -3,7 +3,9 @@ package com.techelevator.controller;
 import com.techelevator.dao.CatCardDao;
 import com.techelevator.services.CatFactService;
 import com.techelevator.services.CatPicService;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class CatController {
 
     private CatCardDao catCardDao;
