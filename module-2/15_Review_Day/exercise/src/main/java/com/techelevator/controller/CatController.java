@@ -3,6 +3,8 @@ package com.techelevator.controller;
 import com.techelevator.dao.CatCardDao;
 import com.techelevator.model.CatCard;
 import com.techelevator.model.CatCardNotFoundException;
+import com.techelevator.model.CatFact;
+import com.techelevator.model.CatPic;
 import com.techelevator.services.CatFactService;
 import com.techelevator.services.CatPicService;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,19 @@ public class CatController {  //we work in here, partially
     }
 
 //    Create a new, randomly created card here
+    @RequestMapping(path = "api/") //need to finish this!!!!
+    public CatCard getRandom() {
+        CatCard randomCard = new CatCard();
+
+        CatFact fact = catFactService.getFact();
+        CatPic pic = catPicService.getPic();
+
+        randomCard.setCatFact(fact.getText());
+        randomCard.setImgUrl(pic.getFile());
+
+        return randomCard;
+
+    }
 
 
 
@@ -51,14 +66,18 @@ public class CatController {  //we work in here, partially
 //    update a card in user collection
 
     @RequestMapping(path = "cards/{id}", method = RequestMethod.PUT)
-    public void updateCard(@PathVariable long cardId,
+    public void updateCard(@PathVariable long id,
                            @Valid @RequestBody CatCard changedCard) throws CatCardNotFoundException {
-        changedCard.setCatCardId(cardId);
+        changedCard.setCatCardId(id);
 
         catCardDao.update(changedCard.getCatCardId(), changedCard);
     }
 
 //      delete a card from user collection
+    @RequestMapping(path = "cards/{id}", method = RequestMethod.DELETE)
+    public void  deleteCard(@PathVariable long id) {
+        catCardDao.delete(id);
+    }
 
 
 
