@@ -2,13 +2,16 @@ package com.techelevator.reservations.controllers;
 
 import com.techelevator.reservations.dao.ReviewDao;
 import com.techelevator.reservations.dao.UserDao;
+import com.techelevator.reservations.exception.BadRequestException;
 import com.techelevator.reservations.model.Review;
 import com.techelevator.reservations.security.model.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.security.Principal;
 import java.util.List;
@@ -36,8 +39,12 @@ public class ReviewController {
     @Transactional
     @RequestMapping(path = "/reviews/testing", method = RequestMethod.PUT)
     public void updateReviews() {
-        reviewDao.updateReview(1);
-        reviewDao.updateReview(2);
+        try {
+            reviewDao.updateReview(1);
+            reviewDao.updateReview(-2);
+        } catch (RuntimeException e) {
+            throw new BadRequestException();
+        }
     }
 
 }

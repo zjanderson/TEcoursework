@@ -100,7 +100,7 @@ public class JdbcReviewDao implements ReviewDao {
     public void updateReview(int reviewId) {
         if (reviewId < 0) throw new RuntimeException();
 
-        String sql = "UPDATE review SET title = title + '. updated!' WHERE reviewId = ?;";
+        String sql = "UPDATE review SET title = title || '. updated!' WHERE review_id = ?;";
 
         jdbcTemplate.update(sql, reviewId);
     }
