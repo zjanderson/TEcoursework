@@ -5,6 +5,7 @@ import com.techelevator.auctions.dao.MemoryAuctionDao;
 import com.techelevator.auctions.exception.AuctionNotFoundException;
 import com.techelevator.auctions.model.Auction;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/auctions")
+@PreAuthorize("isAuthenticated()")
 public class AuctionController {  //TWO LINES OF PREAUTHORIZE CODE IN HERE FOR STEP 4, WORK FOR STEP 5, AND /WHOAMI FOR STEP 6
 
     private AuctionDao dao;
@@ -20,6 +22,7 @@ public class AuctionController {  //TWO LINES OF PREAUTHORIZE CODE IN HERE FOR S
         this.dao = new MemoryAuctionDao();
     }
 
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<Auction> list(@RequestParam(defaultValue = "") String title_like, @RequestParam(defaultValue = "0") double currentBid_lte) {
 
@@ -39,16 +42,19 @@ public class AuctionController {  //TWO LINES OF PREAUTHORIZE CODE IN HERE FOR S
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAnyRole('CREATOR', 'ADMIN')")
     @RequestMapping(path = "", method = RequestMethod.POST)
     public Auction create(@Valid @RequestBody Auction auction) {
         return dao.create(auction);
     }
 
+    @PreAuthorize("hasAnyRole('CREATOR', 'ADMIN')")
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public Auction update(@Valid @RequestBody Auction auction, @PathVariable int id) throws AuctionNotFoundException {
         return dao.update(auction, id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable int id) throws AuctionNotFoundException {
