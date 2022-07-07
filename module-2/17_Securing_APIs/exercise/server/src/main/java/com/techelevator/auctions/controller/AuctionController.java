@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -62,8 +63,8 @@ public class AuctionController {  //TWO LINES OF PREAUTHORIZE CODE IN HERE FOR S
     }
 
     @RequestMapping(path = "/whoami")
-    public String whoAmI() {
-        return "";
+    public String whoAmI(Principal principal) {
+        return principal.getName();
     }
 
 }
