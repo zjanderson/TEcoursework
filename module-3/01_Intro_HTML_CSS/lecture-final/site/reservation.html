@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Reservation</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Make a new reservation</h1>
+
+    <form action="/api/reservation" method="GET">
+
+        <section>
+            <label for="reservation-name">Name: </label>
+            <input id="reservation-name" name="name" type="text">
+        </section>
+
+        <section>
+            <label for="guests">Number of Guests: </label>
+            <input id="guests" type="number" name="guests">
+        </section>
+        
+        <section>
+            <label for="reservation-date">Date: </label>
+            <input type="date" id="reservation-date" name="date">
+        </section>
+
+        <section>
+            <label for="reservation-time">Time: </label>
+            <input type="time" id="reservation-time" name="time">
+        </section>
+
+        <section>
+            <label for="special-occasion">Is Special Occasion?</label>
+            <input type="checkbox" id="special-occasion" name="isSpecial">
+        </section>
+
+        <section>
+            <input type="submit" value="Create Reservation">
+        </section>
+    </form>
+
+    <br>
+    <br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Heading 1</th>
+                <th>Heading 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row 1, Column 1</td>
+                <td>Row 1, Column 2</td>
+            </tr>
+
+            <tr>
+                <td>Row 2, Column 1</td>
+                <td>Row 2, Column 2</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
