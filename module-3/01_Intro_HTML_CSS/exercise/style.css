@@ -1,0 +1,22 @@
+header {
+    text-align: center;
+}
+
+img {
+    width: 400px;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+body {
+    background-color: rgb(10, 90, 21);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}

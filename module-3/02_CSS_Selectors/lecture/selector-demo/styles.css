@@ -1,0 +1,14 @@
+div {
+    background-color: tomato;
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    }
+
+    div.box1 {
+        background-color: purple;
+    }
+
+    #box1 {
+        background-color: black;
+    }

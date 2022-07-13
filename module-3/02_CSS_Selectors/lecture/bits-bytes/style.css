@@ -1,0 +1,45 @@
+html {
+    font-size: 12px;
+}
+
+body {
+    background-color:rgba(192,192,192,0.5);
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    height: 150px;
+}
+
+.banner {
+    width: 800px;
+}
+
+aside {
+    position: fixed;
+    width: 200px;
+    border-right: 5px dotted;
+    height: 100px;
+    padding: 20px;
+}
+
+aside li {
+    list-style: none;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 5px dotted rgba(219, 135, 8, 0.4);
+    margin: 10px;
+    padding-bottom: 10px;
+    width: 80%;
+
+}
+
+aside li a {
+    font-weight: bold;
+    color: #00ADEE;
+    text-decoration: none;
+}

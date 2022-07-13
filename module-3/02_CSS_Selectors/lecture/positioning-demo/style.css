@@ -9,9 +9,9 @@ border-width: 2px;
 
 #cheems {
     width: 50px;
-    position: relative;
-    left: 1px;
-    top: 1px;
+    position: fixed;
+    left: 125px;
+    top: 125px;
 }
 
 #doge {
