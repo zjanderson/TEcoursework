@@ -1,0 +1,40 @@
+div.container > header {
+    grid-area: header;
+}
+
+#menu-nav {
+    grid-area: menu;
+}
+
+div.container > main {
+    grid-area: main;
+}
+
+#upcoming-events {
+    grid-area: events;
+}
+
+div.container > footer {
+    grid-area: footer;
+}
+
+div.container {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+
+    grid-template-areas: "header header header" 
+                         "menu main events" 
+                         "footer footer footer";
+    gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    div.container {
+        grid-template-columns: 1fr;
+        grid-template-areas: "header"
+                             "menu"
+                             "main"
+                             "events"
+                             "footer";
+    }
+}
