@@ -125,3 +125,28 @@ div.food-item img {
 div.food-item p {
     line-height: 2em;
 }
+
+@media screen and (max-width:768px) {
+    ul.sub-menu{
+        display: none;
+    }
+    #menu-nav > ul > li {
+        display: inline-block;
+        padding-right: 10px;
+        padding-bottom: 0px;
+    }
+    aside#upcoming-events {
+        display: inline-block;
+        padding-right: 10px;
+        padding-bottom: 0px;
+        text-align: center;
+        font-size: .8em;
+    }
+
+    div.food-item img {
+        max-width: 75%;
+    
+    }
+
+}
+
