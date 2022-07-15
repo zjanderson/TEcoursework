@@ -21,7 +21,7 @@ div.container > footer {
 div.container {
     display: grid;
     grid-template-columns: 200px 1fr 200px;
-
+    
     grid-template-areas: "header header header" 
                          "menu main events" 
                          "footer footer footer";
