@@ -12,6 +12,12 @@
 			return x + y;
         }
 */
+function sumDouble(x, y) {
+	if (x === y) {
+		return (x + y) * 2;
+	}
+	return x + y;
+}
 
 /*
 2. **hasTeen** We'll say that a number is "teen" if it is in the range 13..19 inclusive. 

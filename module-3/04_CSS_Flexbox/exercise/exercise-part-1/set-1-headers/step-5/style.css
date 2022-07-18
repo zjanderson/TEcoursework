@@ -6,16 +6,37 @@ body {
 header {
   background-color: #F0F0F0;
   padding: 20px;
+  display: flex;
 }
 
 .logo {
   width: 140px;
 }
 
+header > a {
+  display: flex;
+  flex-grow: 0;
+}
+
+header > nav {
+  display: flex;
+  flex-grow: 0;
+}
+
 ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
+  justify-content: flex-end;
+  display: flex;
+}
+
+header > div.spacer {
+  flex-grow: 1;
+}
+
+header > a.my-account{
+  flex-grow: 0;
 }
 
 li {
