@@ -10,8 +10,13 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
-  // Declares a variable those value can be changed
+  const name = "Zac";
+  // Declares a variable whose value can be changed
+  let age = 36;
+  age = 22;
   // Declares a variable that will always be an array
+  const array = [1, 2, 3];
+  array = 3;
 }
 
 /**
@@ -29,8 +34,8 @@ function printParameters(param1, param2) {
  * Compares two values x and y.
  * == is loose equality
  * === is strict equality
- * @param {Object} x
- * @param {Object} y
+ * @param {any} x
+ * @param {any} y
  */
 function equality(x, y) {
   console.log(`x is ${typeof x}`);
@@ -74,11 +79,25 @@ function objects() {
   };
 
   // Log the object
+  console.log(person);
 
   // Log the first and last name
+  console.log(person.firstName + " " + person.lastName);
+  console.log(`${person.firstName} ${person.lastName}`);
 
   // Log each employee
+  console.log(person.employees);
+
+  for(let i = 0; i < person.employees.length; i++) {
+    console.log(person.employees[i]);
+  }
+
+  for(employee of person.employees) {
+    console.log(employee;)
+  }
+
 }
+
 
 /*
 ########################
@@ -90,11 +109,11 @@ function with the same name, more than one time in a script file, the
 earlier ones are overriden and the most recent one will be used.
 */
 
-function Add(num1, num2) {
+function add(num1, num2) {
   return num1 + num2;
 }
 
-function Add(num1, num2, num3) {
+function add(num1, num2, num3) {
   return num1 + num2 + num3;
 }
 
