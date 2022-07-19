@@ -26,7 +26,12 @@ function printToConsole(value) {
  *
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
+ * @returns {number} result of these above being multiplied
  */
+
+function multiplyTogether(firstParameter, secondParameter) {
+  return firstParameter * secondParameter;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -39,7 +44,12 @@ function printToConsole(value) {
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
 
-
+function multiplyNoUndefined(firstParameter = 0, secondParameter = 0) {
+  if(typeof firstParameter != 'number'){
+    firstParameter = 0
+  }
+  return firstParameter * secondParameter;
+}
  
 /**
  * Functions can return earlier before the end of the function. This could be useful
@@ -96,6 +106,12 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
 
 /* arguments object and rest parameter syntax */
 
+function usingExtraArgs(a, b, ...c) {
+  console.log(a);
+  console.log(b);
+  console.log(c);
+}
+
 /* Named Functions: Regular vs. Arrow */
 
 /* Anonymous functions */
@@ -108,9 +124,13 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  *
  * @param {number[]} numbersToSum numbers to add up
  * @returns {number} sum of all the numbers
+ * 
+ * 
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce((prev, curr) => {
+    return prev + curr;
+  }, 0);
 }
 
 /**
@@ -122,6 +142,33 @@ function sumAllNumbers(numbersToSum) {
  * multiples of 3
  */
 function allDivisibleByThree(numbersToFilter) {
+  const filteredNumbers = [];
+
+  for (num of numbersToFilter) {
+    if (num % 3 === 0) {
+      filteredNumbers.push(num);
+    }
+  }
+
+  return filteredNumbers;
+}
+
+function isDivisibleByThree(num) {
+  if (num % 3 === 0) {
+    return true;
+  }
+  return false;
+}
+
+function allDivisibleByThree(numbersToFilter) {
+  const filteredNumbers = numbersToFilter.filter(isDivisibleByThree);
+  return filteredNumbers;
+}
+
+function allDivisibleByThree(numbersToFilter) {
+  const filteredNumbers = numbersToFilter.filter(function(num){
+  return num % 3 === 0;
+})
 }
 
 /**
@@ -131,6 +178,7 @@ function allDivisibleByThree(numbersToFilter) {
  * @returns {boolean} true if all numbers are divisible by 3
  */
  function areAllDivisibleByThree(numbers) {
+   return numbers.every(num => num % 3 === 0);
 
 }
 
@@ -142,6 +190,12 @@ function allDivisibleByThree(numbersToFilter) {
  * @returns {number[]} an array of unique numbers
  */
 function returnOneOfEach(numbers) {
+  return numbers.reduce((prev, curr) => {
+    if (!prev.includes(curr)){
+      prev.push(curr);
+    }
+    return prev;
+  }, []);
 }
 
 /**
@@ -151,6 +205,24 @@ function returnOneOfEach(numbers) {
  * @param {string[]} strings an array of strings
  */
 function returnLongestLength(strings) {
+  if(strings && strings.length > 0) {
+    let longestStr = strings[0];
+    for(let i = 0; i < strings.length;, i++) {
+      if(strings[i].length > longestStr.length) {
+        longestStr = strings[i];
+      }
+    }
+  }
+  return longestStr;
+}
+
+function returnLongestLength(strings) {
+  return strings.reduce((prev, curr) => {
+    if(curr.length > prev.length) {
+      return curr;
+    }
+    return prev;
+  }, '');
 }
 
 /**
@@ -159,8 +231,12 @@ function returnLongestLength(strings) {
  *
  * @param {string[]} ducks array of ducks
  * @returns {boolean} true if any object is a goose
+ * 
+ * ['duck', 'duck', 'duck'] => false
+ * ['duck', 'goose', 'duck'] => true
  */
  function duckDuckGoose(ducks) {
+   ducks.some(d => d ==='goose');
  }
 
  /**
@@ -173,6 +249,15 @@ function returnLongestLength(strings) {
  * [ 1, 5, 25.2 ] -> [ '$1.00', '$5.00', '$25.20' ]
  */
 function toMoney(numbers) {
+  const moneyNumbers = [];
+  for (num of numbers) {
+    moneyNumbers.push(`$${num.toFixed(2)}`);
+  }
+  return moneyNumbers;
+}
+
+function toMoney(numbers) {
+  return numbers.map(num => { return `$${num.toFixed(2)}`});
 }
 
 /**
@@ -183,4 +268,15 @@ function toMoney(numbers) {
  * @returns {number[]} an array of numbers divisible by 3 doubled
  */
 function methodChainingExample(numbers) {
+  return numbers.filter(num => num % 3 === 0).map(num => num * 2);
+}
+
+
+function exampleOfFilterWithThreeParams(numbers) {
+  numbers.filter((num, i, arr) => {
+    console.log(`num: ${num}`);
+    console.log(`i: ${i}`);
+    console.log(`arr: ${arr}`);
+    console.log();
+  })
 }
