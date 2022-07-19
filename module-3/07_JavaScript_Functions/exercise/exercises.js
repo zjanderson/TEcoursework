@@ -26,6 +26,7 @@
  *
  * @param {function} filterFunction the function to filter with
  * @returns {number[]} the filtered array
+ * Walt said to use the callback, don't write own function
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
 
@@ -59,7 +60,7 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
 /*
  * Write and document a function called getFullAddressesOfProperties
  * that takes an array of JavaScript objects containing the
- * following keys:
+ * following keys:  ASSUME we are given an array with the following properties**
  *     * streetNumber
  *     * streetName
  *     * streetType
@@ -72,6 +73,13 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  *     streetNumber streetName streetType city state zip
  *
  * Use `map` and an anonymous function.
+ * 
+ * [ {streetNumber: 1, streetName: 'Mylo', streetType: 'avenue', city: 'Pittsburgh', state: 'PA', zip: '15210'}
+ *  {streetNumber: 2, streetName: 'Buzz', streetType: 'way', city: 'Pittsburgh', state: 'PA', zip: '15211'}] 
+ * ->
+ * ['1 Mylo avenue Pittsburgh PA 15210', 
+ *  '2 Buzz street Pittsburgh PA 15211']
+ * 
  */
 
 /** 
