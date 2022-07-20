@@ -77,6 +77,17 @@ function seeColor(inputString) {
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
 
+function oddOnly(inputArray) {
+	let oddArray = [];
+
+	for (let i = 0; i < inputArray.length; i++) {
+		if (!(inputArray[i] % 2 == 0)) {
+			oddArray.push(inputArray[i]);
+		}
+	}
+	return oddArray;
+}
+
 /*
 6. **frontAgain** Given a string, return true if the first 2 chars in the string also appear 
     at the end of the string, such as with "edited".
@@ -85,6 +96,14 @@ function seeColor(inputString) {
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
+
+function frontAgain(inputString) {
+	characters = inputString.substring(0,2);
+	if (inputString.endsWith(characters)) {
+		return true;
+	}
+	return false;
+}
 
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
@@ -97,6 +116,15 @@ or false otherwise.
 		cigarParty(50, false) → true
 		cigarParty(70, true) → true
 */
+function cigarParty (cigarCount, isWeekend) {
+	if (isWeekend && cigarCount > 39) {
+		return true;
+	}
+	if (cigarCount > 39 && cigarCount < 61) {
+		return true;
+	}
+	return false;
+}
 
 /*
 8. **fizzBuzz** Given a number, return a value according to the following rules:
@@ -112,6 +140,19 @@ In all other cases return the original number.
 	fizzBuzz(8) → 8
 */
 
+function fizzBuzz(numberGiven) {
+	if (numberGiven % 3 == 0 && numberGiven % 5 == 0) {
+		return "FizzBuzz";
+	}
+	if (numberGiven % 5 == 0) {
+		return "Buzz";
+	} 
+	if (numberGiven % 3 == 0) {
+		return "Fizz";
+	} 
+	return numberGiven;
+}
+
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
 
@@ -121,6 +162,18 @@ In all other cases return the original number.
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
 
+function filterEvens(inputArray) {
+	let evenArray = [];
+
+	for (let i = 0; i < inputArray.length; i++) {
+		if (inputArray[i] % 2 == 0) {
+			evenArray.push(inputArray[i]);
+		}
+	}
+	return evenArray;
+}
+
+
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
 
@@ -129,6 +182,18 @@ In all other cases return the original number.
 	filterBigNumbers([]) → []
 */
 
+function filterBigNumbers(inputArray) {
+	let overHundred = [];
+
+	for (let i = 0; i < inputArray.length; i++) {
+		if (inputArray[i]  >= 100) {
+			overHundred.push(inputArray[i]);
+		}
+	}
+	return overHundred;
+}
+
+
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 
 parameter, `x` passed in.
@@ -136,6 +201,16 @@ parameter, `x` passed in.
 	filterMultiplesOfX([3, 5, 1, 9, 18, 21, 42, 67], 3) → [3, 9, 18, 21, 42]
 	filterMultiplesOfX([3, 5, 10, 20, 18, 21, 42, 67], 5) → [5, 10, 20]
 */
+
+function filterMultiplesOfX(inputArray, x) {
+	let results = [];
+	for (let i = 0; i < inputArray.length; i++) {
+		if (inputArray[i] % x == 0) {
+			results.push(inputArray[i]);
+		} 
+	}
+	return results;
+}
 
 /*
 12. **createObject** Write a function that creates an object with a property called 
@@ -149,3 +224,11 @@ firstName, lastName, and age. Populate the properties with your values.
 		age
 	}
 */
+
+function createObject() {
+	return person = {
+		firstName: "Harley",
+		lastName: "Quinn",
+		age: 123
+		}
+}
