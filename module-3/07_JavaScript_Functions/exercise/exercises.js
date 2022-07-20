@@ -43,6 +43,10 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the resultant number
  */
 
+function makeNumber(first, second) {
+  return Number(first + second);
+}
+
 /**
  * Write a function called addAll that takes an unknown number of parameters
  * and adds all of them together. Return the sum.
@@ -115,3 +119,12 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  *
  * Read the tests to verify you have the correct behavior.
  */
+function getSumOfSubArrayValues(arrayOfArrays) {
+  if(!arrayOfArrays) {
+    return 0;
+  }
+
+  return arrayOfArrays.reduce((prev, curr) => {
+    return prev + curr.reduce((prevInner, currInner) => prevInner + currInner ,0 );
+  }, 0);
+}
