@@ -134,11 +134,12 @@ function getFullAddressesOfProperties(inputArray) {
  * @returns {number|string} the number or string that is largest
  **/
 function findLargest(searchArray) {
-  let largest;
-  searchArray.forEach((array));{
-
-  }
- 
+  let largest = searchArray[0];
+  searchArray.forEach((arrayElement) => {
+    if(largest < arrayElement) {
+      largest = arrayElement;
+    }
+  }) 
 
   return largest;
 }
