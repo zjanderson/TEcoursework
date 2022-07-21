@@ -59,12 +59,42 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
-// Set the product reviews page title.
-setPageTitle();
-// Set the product reviews page description.
-setPageDescription();
-// Display all of the product reviews on our page.
-displayReviews();
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Set the product reviews page title.
+  setPageTitle();
+  // Set the product reviews page description.
+  setPageDescription();
+  // Display all of the product reviews on our page.
+  displayReviews();
+
+  const descElement = document.querySelector('.description');
+  descElement.addEventListener('click', () => {
+    toggleDescriptionEdit(descElement);
+  })
+
+  const inputDescElement = document.getElementById('inputDesc');
+  inputDescElement.addEventListener('keyup', (event) => {
+
+    if (event.key === 'Enter') {
+      exitDescriptionEdit(inputDescElement, true);
+    } else if (event.key === 'Escape') {
+      exitDescriptionEdit(inputDescElement, false);
+    }
+  });
+
+  const addReviewButton = document.getElementById('btnToggleForm');
+  addReviewButton.addEventListener('click', () => {
+    showHideForm();
+  });
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (event) => { //i had this as 'click' not 'submit', which still prevented the behavior but probably has other consequences
+    event.preventDefault();
+    saveReview();
+  });
+
+});
 
 /**
  * Hide the description and show the text box.
@@ -130,4 +160,30 @@ function resetFormValues() {
 /**
  * Save the review that was added using the add review form.
  */
-function saveReview() {}
+function saveReview() {
+
+const reviewObject = {
+  reviewer: ' ',
+  title: ' ',
+  rating: 1,
+  review: ' '
+};
+
+const nameInput = document.getElementById('name');
+const titleInput = document.getElementById('title');
+const ratingDropdown = document.getElementById('rating');
+const reviewTextArea = document.getElementById('review');
+
+reviewObject.reviewer = nameInput.value;
+reviewObject.title = titleInput.value;
+reviewObject.rating = ratingDropdown.value;
+reviewObject.review = reviewTextArea.value;
+
+displayReview(reviewObject);
+reviews.push(reviewObject);
+
+resetFormValues();
+showHideForm();
+};
+
+
