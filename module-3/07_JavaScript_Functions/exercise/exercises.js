@@ -20,6 +20,16 @@
  * @returns {boolean} true if they are admitted
  */
 
+function isAdmitted (gpa, satScore = 0, hasReco = false) {
+  if (gpa > 4.0 || satScore > 1300) {
+    return true;
+  }
+  if ((gpa > 3.0 || satScore > 1200) && hasReco) {
+    return true;
+  }
+  return false;
+}
+
 /**
  * Write a function called useParameterToFilterArray that takes an anonymous
  * function and uses that in the `unfilteredArray` filter function. Return the result.
@@ -29,6 +39,10 @@
  * Walt said to use the callback, don't write own function
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+function useParameterToFilterArray(filterFunction) {
+   return unfilteredArray.filter(filterFunction);
+}
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -43,7 +57,7 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the resultant number
  */
 
-function makeNumber(first, second) {
+function makeNumber(first = 0, second = 0) {
   return Number(first + second);
 }
 
@@ -55,11 +69,25 @@ function makeNumber(first, second) {
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
+function addAll() {
+  let sum = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+  return sum;
+}
+
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+
+function makeHappy(inputArray) {
+  return outputArray = inputArray.map( (theString) => {
+      return 'Happy ' + theString;
+    });
+}
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -85,6 +113,11 @@ function makeNumber(first, second) {
  *  '2 Buzz street Pittsburgh PA 15211']
  * 
  */
+function getFullAddressesOfProperties(inputArray) {
+  return result = inputArray.map( (theObject) => {
+      return [theObject.streetNumber, theObject.streetName, theObject.streetType, theObject.city, theObject.state, theObject.zip].join(' ');
+  });
+}
 
 /** 
  * Write and document a function called findLargest that uses `forEach`
@@ -100,7 +133,15 @@ function makeNumber(first, second) {
  * @param {number[]|string[]} searchArray the array to search
  * @returns {number|string} the number or string that is largest
  **/
+function findLargest(searchArray) {
+  let largest;
+  searchArray.forEach((array));{
 
+  }
+ 
+
+  return largest;
+}
 
 /*
  * CHALLENGE
