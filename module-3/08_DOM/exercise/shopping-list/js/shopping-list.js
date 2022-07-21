@@ -3,16 +3,16 @@ const pageTitle = 'My Shopping List';
 
 // add groceries -- might need to add 'completed' boolean, syntax , completed: false 
 const groceries = [
-  { id: 1, name: 'Chicken', completed: false},
-  { id: 2, name: 'Lye', completed: false},
-  { id: 3, name: 'Whiskey', completed: false},
-  { id: 4, name: 'Pallet of Cabbage', completed: false},
-  { id: 5, name: 'A Single Grape', completed: false},
-  { id: 6, name: 'Live Salmon', completed: false},
-  { id: 7, name: 'Slingshot', completed: false},
-  { id: 8, name: 'GameStop Franchise', completed: false},
-  { id: 9, name: 'Local Stream Detritus', completed: false},
-  { id: 10, name: 'Flux Capacitor', completed: false}
+  { id: 1, name: 'Chicken'},
+  { id: 2, name: 'Lye'},
+  { id: 3, name: 'Whiskey'},
+  { id: 4, name: 'Pallet of Cabbage'},
+  { id: 5, name: 'A Single Grape'},
+  { id: 6, name: 'Live Salmon'},
+  { id: 7, name: 'Slingshot'},
+  { id: 8, name: 'GameStop Franchise'},
+  { id: 9, name: 'Local Stream Detritus'},
+  { id: 10, name: 'Flux Capacitor'}
 ];
 
 /**
@@ -41,9 +41,9 @@ function displayGroceries() {
  * to every list item and add the class completed to each one
  */
 function markCompleted() {
-  // const li = document.querySelectorAll('li');
-  groceries.forEach((item) => {
-    item.completed = true;
+  let nodeList = document.querySelectorAll('li');
+  nodeList.forEach((item) => {
+  item.classList.add('completed')
   });
 }
 
