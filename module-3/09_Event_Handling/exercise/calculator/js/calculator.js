@@ -97,3 +97,6 @@ document.addEventListener('LOADED_EVENT_GOES_HERE', () => {
 
 });
 
+const equalSign = document.querySelector(".equal-sign");
+equalSign.addEventListener('click', showEventDetails);
+
