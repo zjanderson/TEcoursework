@@ -1,4 +1,4 @@
-<template>
+<template>        
   <div class="container">
     <table id="tblUsers">
       <thead>
