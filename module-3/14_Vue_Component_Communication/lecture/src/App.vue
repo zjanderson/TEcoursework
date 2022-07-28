@@ -11,7 +11,10 @@
       <star-summary rating="5"></star-summary>
     </div>
     <add-review></add-review>
-    <review-list></review-list>
+    <!-- <review-list></review-list> -->
+    <a href="#" v-on:click.prevent="toggleDisplay">{{ toggleDisplayText }}</a>
+    <review-list v-if="display === 'list'"></review-list>
+    <review-table v-else></review-table>
   </div>
 </template>
 
@@ -19,7 +22,8 @@
 import AverageSummary from "./components/AverageSummary.vue";
 import StarSummary from "./components/StarSummary.vue";
 import AddReview from "./components/AddReview.vue";
-import ReviewList from "./components/ReviewList.vue";
+// import ReviewList from "./components/ReviewList.vue";
+import ReviewTable from "./components/ReviewTable.vue"
 
 export default {
   name: "app",
@@ -27,7 +31,33 @@ export default {
     AverageSummary,
     StarSummary,
     AddReview,
-    ReviewList
+    // ReviewList
+    ReviewTable
+  }, 
+  
+  data() {
+    return {
+      display: 'list'
+    }
+  },
+
+  computed: {
+    toggleDisplayText() {
+      if (this.display === 'list') {
+        return 'Display Table View';
+      }
+      return 'Display List View';
+    }
+  }, 
+
+  methods: {
+    toggleDisplay() {
+      if (this.dispay === 'list') {
+        this.display = 'table';
+      } else {
+        this.display = 'list';
+      }
+    }
   }
 };
 </script>
