@@ -10,6 +10,7 @@ export default new Vuex.Store({
     filter: 0,
     reviews: [
       {
+        id: 1,
         reviewer: 'Malcolm Gladwell',
         title: 'What a book!',
         review:
@@ -18,6 +19,7 @@ export default new Vuex.Store({
         isFavorited: false
       },
       {
+        id: 2,
         reviewer: 'Tim Ferriss',
         title: 'Had a cigar party started in less than 4 hours.',
         review:
@@ -26,6 +28,7 @@ export default new Vuex.Store({
         isFavorited: false
       },
       {
+        id: 3,
         reviewer: 'Ramit Sethi',
         title: 'What every new entrepreneurs needs. A door stop.',
         review:
@@ -34,6 +37,7 @@ export default new Vuex.Store({
         isFavorited: false
       },
       {
+        id: 4, 
         reviewer: 'Gary Vaynerchuk',
         title: 'And I thought I could write',
         review:

@@ -8,14 +8,21 @@
 <script>
 export default {
   name: "star-summary",
-  props: ["rating"],
+  // props: ["rating"],  THIS IS ANOTHER WAY TO WRITE THE FOLLOWING
+  props: {
+    rating: {
+      type: Number,
+      required: true
+    }
+  },
   methods: {
     updateFilter() {
+      this.$store.commit('UPDATE_FILTER', Number.parseInt(this.rating))
     }
   },
   computed: {
     numberOfReviews() {
-      const reviews = [];
+      const reviews = this.$store.state.reviews;
       return reviews.reduce((currentCount, review) => {
         if(review.rating === parseInt(this.rating)) {
           currentCount++;

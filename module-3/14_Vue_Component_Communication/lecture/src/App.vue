@@ -4,11 +4,11 @@
     <p class="description">{{ $store.state.description }}</p>
     <div class="well-display">
       <average-summary></average-summary>
-      <star-summary></star-summary>
-      <star-summary></star-summary>
-      <star-summary></star-summary>
-      <star-summary></star-summary>
-      <star-summary></star-summary>
+      <star-summary rating="1"></star-summary>
+      <star-summary rating="2"></star-summary>
+      <star-summary rating="3"></star-summary>
+      <star-summary rating="4"></star-summary>
+      <star-summary rating="5"></star-summary>
     </div>
     <add-review></add-review>
     <review-list></review-list>
