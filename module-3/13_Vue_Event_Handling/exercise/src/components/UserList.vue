@@ -38,11 +38,7 @@
           </td>
           <td>&nbsp;</td>
         </tr>
-        <tr
-          v-for="user in filteredList"
-          v-bind:key="user.id"
-          v-bind:class="{ disabled: user.status === 'Disabled' }"
-        >
+        <tr v-for="user in filteredList" v-bind:key="user.id" v-bind:class="{ disabled: user.status === 'Disabled' }">
           <td>
             <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
           </td>
@@ -166,9 +162,7 @@ export default {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
         filteredUsers = filteredUsers.filter((user) =>
-          user.firstName
-            .toLowerCase()
-            .includes(this.filter.firstName.toLowerCase())
+          user.firstName.toLowerCase().includes(this.filter.firstName.toLowerCase())
         );
       }
       if (this.filter.lastName != "") {

@@ -11,19 +11,25 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter"/></td>
-        <td><input type="text" id="lastNameFilter"/></td>
-        <td><input type="text" id="usernameFilter"/></td>
-        <td><input type="text" id="emailFilter"/></td>
+        <td><input type="text" id="firstNameFilter" v-model="filter.firstName" /></td>
+        <td><input type="text" id="lastNameFilter" v-model="filter.lastName" /></td>
+        <td><input type="text" id="usernameFilter" v-model="filter.username" /></td>
+        <td><input type="text" id="emailFilter" v-model="filter.emailAddress" /></td>
         <td>
-          <select id="statusFilter">
+          <select id="statusFilter"  v-model="filter.status">
             <option value="">Show All</option>
             <option value="Active">Active</option>
             <option value="Disabled">Disabled</option>
           </select>
         </td>
       </tr>
-      <!-- <tr v-for="user in filteredList"></tr>   NEED TO BIND THIS AND THEN IT SHOULD WORK -->
+      <tr v-for="user in filteredList" v-bind:key="user.users">
+        <td> {{user.firstName}} </td>
+        <td> {{user.lastName}} </td>
+        <td>{{user.username}} </td>
+        <td> {{user.emailAddress}} </td>
+        <td> {{user.status}} </td>
+      </tr>
     </tbody>
   </table>
 </template>
@@ -71,7 +77,7 @@ export default {
           return false;
         }
 
-        return false;
+        return true;
 
       });
     }
