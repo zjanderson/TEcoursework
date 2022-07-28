@@ -67,13 +67,13 @@ export default {
         if (! user.lastName.toLowerCase().includes(this.filter.lastName.toLowerCase())) {
           return false;
         }
-        if (! user.userName.toLowerCase().includes(this.filter.userName.toLowerCase())) {
+        if (! user.username.toLowerCase().includes(this.filter.username.toLowerCase())) {
           return false;
         }
         if (! user.emailAddress.toLowerCase().includes(this.filter.emailAddress.toLowerCase())) {
           return false;
         }
-        if (this.filter.status !== '' && user.status === this.filter.status) {
+        if (this.filter.status !== '' && user.status !== this.filter.status) {
           return false;
         }
 

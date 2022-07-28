@@ -60,7 +60,7 @@
       <button>Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click.prevent="toggleShowForm">Add New User</button>
 
     <form id="frmAddNewUser">
       <div class="field">
@@ -153,10 +153,14 @@ export default {
           emailAddress: "msmith@foo.com",
           status: "Disabled"
         }
-      ]
+      ],
+      showForm: false,    //DOES THIS NEED TO BE HERE?
     };
   },
-  methods: {},
+  methods: {
+
+
+  },
   computed: {
     filteredList() {
       let filteredUsers = this.users;
@@ -193,6 +197,11 @@ export default {
       }
       return filteredUsers;
     }
+
+    // toggleShowForm() {
+    //   this.showForm = !this.showForm;
+    // },
+
   }
 };
 </script>
