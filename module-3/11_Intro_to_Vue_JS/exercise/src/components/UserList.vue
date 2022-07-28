@@ -23,7 +23,7 @@
           </select>
         </td>
       </tr>
-      <!-- user listing goes here -->
+      <!-- <tr v-for="user in filteredList"></tr>   NEED TO BIND THIS AND THEN IT SHOULD WORK -->
     </tbody>
   </table>
 </template>
@@ -33,6 +33,14 @@ export default {
   name: 'user-list',
   data() {
     return {
+      filter: {
+        firstName: '',
+        lastName: '',
+        username: '',
+        emailAddress: '',
+        status: '',
+      },
+
       users: [
         { firstName: 'John', lastName: 'Smith', username: 'jsmith', emailAddress: 'jsmith@gmail.com', status: 'Active' },
         { firstName: 'Anna', lastName: 'Bell', username: 'abell', emailAddress: 'abell@yahoo.com', status: 'Active' },
@@ -42,7 +50,33 @@ export default {
         { firstName: 'Mark', lastName: 'Smith', username: 'msmith', emailAddress: 'msmith@foo.com', status: 'Disabled' }
       ]
     }
+  },
+
+  computed: {
+    filteredList() {
+      return this.users.filter((user) => {
+        if (! user.firstName.toLowerCase().includes(this.filter.firstName.toLowerCase())) {
+          return false;
+        }
+        if (! user.lastName.toLowerCase().includes(this.filter.lastName.toLowerCase())) {
+          return false;
+        }
+        if (! user.userName.toLowerCase().includes(this.filter.userName.toLowerCase())) {
+          return false;
+        }
+        if (! user.emailAddress.toLowerCase().includes(this.filter.emailAddress.toLowerCase())) {
+          return false;
+        }
+        if (this.filter.status !== '' && user.status === this.filter.status) {
+          return false;
+        }
+
+        return false;
+
+      });
+    }
   }
+
 }
 </script>
 
