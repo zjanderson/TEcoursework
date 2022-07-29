@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" v-bind:checked = "selectedUserIDs.length" v-on:click = "toggleSelectAll" />
+            <input type="checkbox" id="selectAll" v-bind:checked = "selectedUserIDs.length" v-on:click="toggleSelectAll()" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -48,21 +48,21 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button v-on:click="flipStatus(user.id)" class="btnEnableDisable">{{ user.status === 'Active' ? 'Disable' : 'Enable'}}</button>
+            <button v-on:click="flipStatus(user.id)" class="btnEnableDisable" v-text = "user.status === 'Active' ? 'Disable' : 'Enable'"></button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button v-on:click="enableSelectedUser" v-bind:disabled="actionButtonDisabled">Enable Users</button>
-      <button v-bind:disabled="actionButtonDisabled">Disable Users</button>
+      <button v-on:click="enableSelectedUsers" v-bind:disabled="actionButtonDisabled">Enable Users</button>
+      <button v-on:click="disableSelectedUsers" v-bind:disabled="actionButtonDisabled">Disable Users</button>
       <button v-on:click="deleteSelectedUsers" v-bind:disabled="actionButtonDisabled">Delete Users</button>
     </div>
 
-    <button v-on:click.prevent="toggleShowForm">Add New User</button> <!-- do i need to use toggleShowForm() here and pass it the showForm property, somehow?-->
+    <button v-on:click="showForm = !showForm">Add New User</button> <!-- do i need to use toggleShowForm() here and pass it the showForm property, somehow?-->
 
-    <form id="frmAddNewUser" v-on:submit.prevent="saveUser">
+    <form id="frmAddNewUser" v-show="showForm" v-on:submit.prevent="saveUser">
       <div class="field">
         <label for="firstName">First Name:</label>
         <input type="text" name="firstName" v-model="newUser.firstName"/>
@@ -89,6 +89,7 @@ export default {
   name: "user-list",
   data() {
     return {
+      isChecked: false,
       selectedUserIDs: [],
       filter: {
         firstName: "",
@@ -169,14 +170,14 @@ export default {
       });
       this.user = "";
     },
-    toggleShowForm(showForm) {
+    // toggleShowForm(showForm) {
       // if(showForm == false) {
       //   showForm = true;
       // } else {
       //   showForm = false;
       // }
-      return !showForm;  //lolol this is so much faster
-    },
+    //   return !showForm;  //lolol this is so much faster
+    // },
     getButtonText(status) {
       if (status === 'Active') {
         return 'Disable';
@@ -184,25 +185,45 @@ export default {
         return 'Enable';
       }
     },
+
     flipStatus(id) {
-      const theUserToUpdate = this.users.find(user => user.id === id); 
+      // const theUserToUpdate = this.users.find(user => user.id === id); 
       
-      if(theUserToUpdate.status === 'Active') {
-        theUserToUpdate.status = 'Disabled';
-      } else {
-        theUserToUpdate.status = 'Active';
-      }
-    }
+      // if(theUserToUpdate.status === 'Active') {
+      //   theUserToUpdate.status = 'Disabled';
+      // } else {
+      //   theUserToUpdate.status = 'Active';
+      // }
 
-  },
+      this.users.forEach(user => {
+        if(user.id === id) {
+          if(user.status === 'Active') {
+            user.status = 'Disabled';
+          } else {
+            user.status = 'Active';
+          }
+        }
+      })
+    },
 
-  enableSelectedUser() {
+  enableSelectedUsers() {
     this.users.forEach(user => {
       if (this.selectedUserIDs.includes(user.id)) {
         user.status = 'Active';
       }
     });
     this.selectedUserIDs = [];
+    // this.isChecked = false;
+  },
+
+  disableSelectedUsers() {
+    this.users.forEach(user => {
+      if (this.selectedUserIDs.includes(user.id)) {
+        user.status = 'Disabled';
+      }
+    });
+    this.selectedUserIDs = [];
+    // this.isChecked = false;
   },
 
   deleteSelectedUsers() {
@@ -214,19 +235,23 @@ export default {
     });
     this.users = newUserList;
     this.selectedUserIDs = [];
-  },
+    // this.isChecked = false;
+},
 
   toggleSelectAll() {
-    if (this.selectedUserIDs.length === this.users.length) {
-      this.selectedUserIDs = [];
-    } else {
-      this.selectedUserIDs = [];
-
-      this.users.forEach(user => {
-        this.selectedUserIDs.push(user.id);
+    if (this.selectedUserIDs.length <1) {
+        this.users.forEach(user => {
+          this.selectedUserIDs.push(user.id);
+          // this.isChecked = true; thought this would fix the opposing checkbox issue for toggle -- false.
       })
+    } else {
+        // this.users.forEach(user => {
+        //   this.selectedUserIDs.pop(user.id);
+        // })
+        this.selectedUserIDs = [];
     }
   },
+},
 
   computed: {
 
