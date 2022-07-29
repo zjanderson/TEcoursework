@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-bind:checked = "selectedUserIDs.length" v-on:click = "toggleSelectAll" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -40,7 +40,7 @@
         </tr>
         <tr v-for="user in filteredList" v-bind:key="user.id" v-bind:class="{ disabled: user.status === 'Disabled' }">
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-model="selectedUserIDs"/>
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -48,16 +48,16 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <button v-on:click="flipStatus(user.id)" class="btnEnableDisable">{{ user.status === 'Active' ? 'Disable' : 'Enable'}}</button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button>Delete Users</button>
+      <button v-on:click="enableSelectedUser" v-bind:disabled="actionButtonDisabled">Enable Users</button>
+      <button v-bind:disabled="actionButtonDisabled">Disable Users</button>
+      <button v-on:click="deleteSelectedUsers" v-bind:disabled="actionButtonDisabled">Delete Users</button>
     </div>
 
     <button v-on:click.prevent="toggleShowForm">Add New User</button> <!-- do i need to use toggleShowForm() here and pass it the showForm property, somehow?-->
@@ -89,6 +89,7 @@ export default {
   name: "user-list",
   data() {
     return {
+      selectedUserIDs: [],
       filter: {
         firstName: "",
         lastName: "",
@@ -175,10 +176,64 @@ export default {
       //   showForm = false;
       // }
       return !showForm;  //lolol this is so much faster
+    },
+    getButtonText(status) {
+      if (status === 'Active') {
+        return 'Disable';
+      } else {
+        return 'Enable';
+      }
+    },
+    flipStatus(id) {
+      const theUserToUpdate = this.users.find(user => user.id === id); 
+      
+      if(theUserToUpdate.status === 'Active') {
+        theUserToUpdate.status = 'Disabled';
+      } else {
+        theUserToUpdate.status = 'Active';
+      }
     }
 
   },
+
+  enableSelectedUser() {
+    this.users.forEach(user => {
+      if (this.selectedUserIDs.includes(user.id)) {
+        user.status = 'Active';
+      }
+    });
+    this.selectedUserIDs = [];
+  },
+
+  deleteSelectedUsers() {
+    const newUserList = [];
+    this.users.forEach(user => {
+      if (!this.selectedUserIDs.includes(user.id)) {
+        newUserList.push(user);
+      }
+    });
+    this.users = newUserList;
+    this.selectedUserIDs = [];
+  },
+
+  toggleSelectAll() {
+    if (this.selectedUserIDs.length === this.users.length) {
+      this.selectedUserIDs = [];
+    } else {
+      this.selectedUserIDs = [];
+
+      this.users.forEach(user => {
+        this.selectedUserIDs.push(user.id);
+      })
+    }
+  },
+
   computed: {
+
+    actionButtonDisabled() {
+      return this.selectedUserIDs.length === 0;
+  } ,
+
     filteredList() {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
