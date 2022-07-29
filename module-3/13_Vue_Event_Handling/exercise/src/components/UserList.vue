@@ -60,24 +60,24 @@
       <button>Delete Users</button>
     </div>
 
-    <button v-on:click.prevent="toggleShowForm">Add New User</button>
+    <button v-on:click.prevent="toggleShowForm">Add New User</button> <!-- do i need to use toggleShowForm() here and pass it the showForm property, somehow?-->
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-on:submit.prevent="saveUser">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input type="text" name="firstName" v-model="newUser.firstName"/>
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input type="text" name="lastName" v-model="newUser.lastName"/>
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <input type="text" name="username" v-model="newUser.username"/>
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <input type="text" name="emailAddress" v-model="newUser.emailAddress"/>
       </div>
       <button type="submit" class="btn save">Save User</button>
     </form>
@@ -154,11 +154,28 @@ export default {
           status: "Disabled"
         }
       ],
-      showForm: false,    //DOES THIS NEED TO BE HERE?
+      showForm: false,    //this should hide the form on loading page
     };
   },
   methods: {
-
+    saveUser() {
+      this.users.unshift({
+        firstName: this.newUser.firstName,
+        lastName: this.lastName,
+        username: this.username,
+        emailAddress: this.emailAddress,
+        status: this.status
+      });
+      this.user = "";
+    },
+    toggleShowForm(showForm) {
+      // if(showForm == false) {
+      //   showForm = true;
+      // } else {
+      //   showForm = false;
+      // }
+      return !showForm;  //lolol this is so much faster
+    }
 
   },
   computed: {
