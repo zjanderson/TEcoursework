@@ -1,20 +1,24 @@
 <template>
   <div class="book-container">
-
+    <book-card v-bind:book="book" v-for="book in $store.state.books" v-bind:key="books.isbn"/> <!-- idk why it hates this so much, syntax from bookcard.vue -->
   </div>
 </template>
 
 <script>
+import BookCard from './BookCard.vue'
 
 export default {
-    name: 'reading-list'
+  name: 'reading-list',
+  components: {
+    BookCard
+  }
 }
 </script>
 
 <style>
 .book-container {
-    display:flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  display:flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 </style>
