@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import AddReview from '../views/AddReview.vue'
 import ProductDetail from '../views/ProductDetail.vue'
 import ProductsList from '../views/ProductsList.vue'
 
@@ -16,6 +17,12 @@ const routes = [
     name: 'product-detail',
     path: '/products/:id',
     component: ProductDetail
+  },
+
+  {
+    name: 'add-review',
+    path: '/products/:id/add-review',
+    component: AddReview
   }
 
 ]

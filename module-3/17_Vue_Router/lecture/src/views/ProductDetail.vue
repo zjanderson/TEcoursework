@@ -5,6 +5,8 @@
 
     <div class="actions">
       <router-link :to="{ name: 'products' }">Back to Products</router-link>
+        |
+      <router-link :to="{ name: 'add-review', params: { id: product.id }}">Add New Review</router-link>
     </div>
 
     <div class="well-display">
