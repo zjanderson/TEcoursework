@@ -1,6 +1,6 @@
 <template>
   <div class="book-container">
-    <book-card v-bind:book="book" v-for="book in $store.state.books" v-bind:key="books.isbn"/> <!-- idk why it hates this so much, syntax from bookcard.vue -->
+    <book-card v-bind:book="book" v-for="book in $store.state.books" :key="book.isbn"/> <!-- idk why it hates this so much, syntax from bookcard.vue -->
   </div>
 </template>
 
