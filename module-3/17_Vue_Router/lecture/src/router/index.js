@@ -1,9 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import ProductDetail from '../views/ProductDetail.vue'
+import ProductsList from '../views/ProductsList.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    name: 'products', //this is just a made-up name, we can use it later to refer to things if we want to
+    path: '/',
+    component: ProductsList
+  }, 
+
+  {
+    name: 'product-detail',
+    path: '/products/:id',
+    component: ProductDetail
+  }
 
 ]
 

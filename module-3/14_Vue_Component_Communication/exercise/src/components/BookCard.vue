@@ -29,8 +29,8 @@ export default {
     },
 
     methods: {
-        setRead(value) {
-            this.$store.commit('SET_READ_STATUS', {book: this.book, value: value});
+        setRead() {
+            this.$store.commit('SET_READ_STATUS', this.book);
         },
 
         addToReadinglist(book) {
