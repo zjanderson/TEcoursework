@@ -10,7 +10,7 @@
       <router-link 
         v-else
         class="board"
-        v-for="board in boards"
+        v-for="board in boards" 
         v-bind:key="board.id"
         v-bind:to="{ name: 'Board', params: { id: board.id } }"
         v-bind:style="{ 'background-color': board.backgroundColor }">

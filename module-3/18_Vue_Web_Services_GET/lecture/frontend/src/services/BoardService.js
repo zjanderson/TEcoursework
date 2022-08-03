@@ -6,15 +6,12 @@ export default {
     return axios.get('/boards');
   },
 
-  getCards() {
-    throw Error('Not yet implemented');
+  getCards(boardID) {
+    return axios.get('/boards/' + boardID);
   },
 
-  getCard(boardID, cardID) {
-    return axios.get(`/boards/${boardID}`).then((response) => {
-      const cards = response.data.cards;
-      return cards.find(card => card.id == cardID);
-    });
-  }
+  getCard(cardID) {
+    return axios.get(`/cards/${cardID}`);
+    }
 
-}
+  }

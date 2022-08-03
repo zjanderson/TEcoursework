@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Board from '../views/Board.vue'
 import Card from '../views/Card.vue'
+import ShoppingList from '@/views/ShoppingList.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/board/:boardID/card/:cardID',
     name: 'Card',
     component: Card
+  },
+  {
+    path: '/shopping',
+    name: 'shopping-list',
+    component: ShoppingList
   }
 ]
 

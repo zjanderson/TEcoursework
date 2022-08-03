@@ -50,9 +50,9 @@ Create a new component called `BookDetails` that shows all of a book's details o
 
 ![Book Detail Page](./etc/book-detail-page.png)
 
-Create a view and a dynamic route with the path `/book/` plus the `isbn` number on the end—for example, `/book/9781400079278`. Use that number to look up the book for the `BookDetails` component.
+Create a view and a dynamic route with the path `/book/` plus the `isbn` number on the end—for example, `/book/9781400079278`. Use that number to look up the book for the `BookDetails` component (we need to use a Prop, and then pass the book object down to the BookDetails.vue you made).
 
-Finally, link the `BookCard` components in the `ReadingList` component to this new route, making sure to have the book's `isbn` as part of the link when the `BookCard` is clicked.
+Finally, link the `BookCard` components in the `ReadingList` component to this new route, making sure to have the book's `isbn` as part of the link when the `BookCard` is clicked. (With ReadingList, we looped over bookcards. Here we are going to loop over links that are clickable that contain the entire bookcard. The routerlink is going to use the name and params to figure out where to send you. in readinglist.vue div class book=-container, you can router-link to the route you make, and you need to elevate the scope of the loop so it can be called elsewhere)
 
 > Hint: Look at the `ReadingList` component to determine the source of the data you should use in the `BookDetails` component. Consider what array methods you know that return an element or elements with a specific value. `BookDetails` must receive a single `book` object.
 
