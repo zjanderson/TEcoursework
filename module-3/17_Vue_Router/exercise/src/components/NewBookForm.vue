@@ -28,6 +28,7 @@ export default {
                 author: '',
                 read: false,
                 isbn: ''
+                //after this is saved, route back!
             };
         }
     }
