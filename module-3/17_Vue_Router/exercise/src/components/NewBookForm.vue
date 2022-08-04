@@ -28,8 +28,9 @@ export default {
                 author: '',
                 read: false,
                 isbn: ''
-                //after this is saved, route back!
             };
+            //after this is saved, route back!
+            this.$router.push({name: 'myBooks'});
         }
     }
 }

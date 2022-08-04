@@ -5,6 +5,7 @@
       <router-link v-bind:to="{name: 'myBooks'}">My Books</router-link>
     </nav>
     <router-view />
+    <router-link v-bind:to="{name: 'addBook'}">Add Book to Reading List</router-link>
   </div>
 </template>
 

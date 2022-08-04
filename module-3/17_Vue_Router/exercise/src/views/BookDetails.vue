@@ -4,14 +4,13 @@
 
 <script>
 
-import BookCard from '@/components/BookCard.vue';
-
+import BookCard from '@/components/BookCard'
 export default {
   components: {
-    BookCard
+    BookCard,
   }
-}
 
+}
 </script>
 
 <style>
