@@ -62,7 +62,26 @@ export default {
       });
     },
     saveNewBoard() {
- 
+      this.isLoading = true;
+      boardsService
+        .addBoard(this.newBoard)
+        .then(() => {
+          this.retrieveBoards();
+          this.showAddBoard = false;
+          this.newBoard = {
+            title: '',
+            backgroundColor: this.randomBackgroundColor()
+          };
+      })
+      .catch(error => {
+        if (error.response) {
+          this.errorMsg = "Error submitting. Response received was " + error.response.statusText;
+        } else if (error.request) {
+          this.errorMsg = "Error submitting. The server could not be reached.";
+        } else {
+          this.errorMsg = "Error submitting.";
+        }
+      })
     },
     randomBackgroundColor() {
       return "#" + this.generateHexCode();
