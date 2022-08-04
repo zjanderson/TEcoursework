@@ -11,6 +11,10 @@
 </template>
 
 <script>
+
+import apiService from '@/Services/apiService.js';
+
+
 export default {
   name: 'topic-details',
   props: {
@@ -24,7 +28,13 @@ export default {
         messages: []
       },
     }
+  },
+  created() {
+    apiService.getDetails(this.$route.params.id).then( (response) => {
+      this.topic = response.data;
+    });
   }
+
 }
 </script>
 
